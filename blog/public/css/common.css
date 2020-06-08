@@ -1,0 +1,41 @@
+body{
+    margin: 0px;
+}
+.side-title{
+    line-height: 60px;
+    height: 60px;
+    text-align: center;
+    padding: 0 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-weight: 300;
+    color: rgba(255,255,255,.8);
+    border-bottom: 1px solid rgb(107, 107, 107);
+}
+.el-aside,.side-title{
+    background-color: rgb(84, 92, 100);
+}
+.el-container{
+    height: 100vh;
+}
+.el-menu{
+    border-right: none;
+}
+.el-main{
+    padding: 0px;
+}
+.side-close{
+    float: left;
+}
+.side-close:hover{
+    background-color: rgb(67, 74, 80);
+}
+.side-close a{
+    height: 60px;
+    line-height: 60px;
+    padding: 0px 25px;
+    color: rgba(255,255,255,.8);
+}
+#iframe_box{
+    border: none;
+}

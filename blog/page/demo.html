@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../public/css/element/index.css">
+    <link rel="stylesheet" href="../public/css/common.css">
+</head>
+
+
+<body>
+    <div id="app">
+        <el-container>
+            <el-aside style="width: 250px;">
+                <div class="side-title">
+                    <span>后台</span>
+                </div>
+                <el-menu background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+                    <!-- 一级菜单 -->
+                    <template v-for="item in list">
+                        <el-submenu v-if="item.children && item.children.length" :index="item.path" :key="item.path">
+                            <template slot="title"><i :class="item.icon"></i><span>{{item.name}}</span></template>
+                            <!-- 二级菜单 -->
+                            <template v-for="itemChild in item.children">
+                                <el-submenu v-if="itemChild.children && itemChild.children.length"
+                                    :index="itemChild.path" :key="itemChild.path">
+                                    <template slot="title">
+                                        <i :class="itemChild.icon"></i><span>{{itemChild.name}}</span>
+                                    </template>
+                                    <!-- 三级菜单 -->
+                                    <el-menu-item v-for="itemChild_Child in itemChild.children"
+                                        v-on:click="openUrl(itemChild_Child.url)" :index="itemChild_Child .path"
+                                        :key="itemChild_Child.path">
+                                        <i :class="itemChild_Child.icon"></i><span
+                                            slot="title">{{itemChild_Child.name}}</span></el-menu-item>
+                                </el-submenu>
+                                <el-menu-item v-else :index="itemChild.path" v-on:click="openUrl(itemChild.url)"
+                                    :key="itemChild.path"><i :class="itemChild.icon"></i><span
+                                        slot="title">{{itemChild.name}}</span>
+                                </el-menu-item>
+                            </template>
+                        </el-submenu>
+                        <el-menu-item v-else :index="item.path" :key="item.path"><i :class="item.icon"></i><span
+                                slot="title">{{item.name}}</span></el-menu-item>
+                    </template>
+
+                </el-menu>
+            </el-aside>
+            <el-main>
+                <el-menu class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color="#545c64"
+                    text-color="#fff" active-text-color="#ffd04b" style="border-bottom: none;">
+                    <div class="side-close">
+                        <a href="javascript:;" id="openlist" value="0" onclick="narrow()" title="收起左侧导航">
+                            <i class="el-icon-d-arrow-right"></i>
+                        </a>
+                    </div>
+                    <el-menu-item index="1">处理中心</el-menu-item>
+                    <el-submenu index="2">
+                        <template slot="title">我的工作台</template>
+                        <el-menu-item index="2-1">选项1</el-menu-item>
+                        <el-menu-item index="2-2">选项2</el-menu-item>
+                        <el-menu-item index="2-3">选项3</el-menu-item>
+                        <el-submenu index="2-4">
+                            <template slot="title">选项4</template>
+                            <el-menu-item index="2-4-1">选项1</el-menu-item>
+                            <el-menu-item index="2-4-2">选项2</el-menu-item>
+                            <el-menu-item index="2-4-3">选项3</el-menu-item>
+                        </el-submenu>
+                    </el-submenu>
+                    <el-menu-item index="3">消息中心</el-menu-item>
+                </el-menu>
+                <div class="el-container">
+                    <iframe id="iframe_box" v-bind:src="iframeUrl" width="100%" height="100%"></iframe>
+                </div>
+            </el-main>
+        </el-container>
+    </div>
+</body>
+<script src="../public/js/vue.min.js"></script>
+<script src="../public/css/element/index.js"></script>
+<script src="../public/js/jquery-2.1.4.min.js"></script>
+<script>
+    function narrow() {
+        var isTrue = parseInt($('#openlist').attr('value'));
+        if (isTrue == 0) {
+            $(".el-aside").animate({
+                width: "-250px"
+            }, 250);
+            $('#openlist').attr('value', 1);
+            $('#openlist i').removeClass('el-icon-d-arrow-right');
+            $('#openlist i').addClass('el-icon-d-arrow-left');
+            $('#openlist').attr('title', '展开左侧导航');
+        } else {
+            $(".el-aside").animate({
+                width: "250px"
+            }, 250);
+            $('#openlist').attr('value', 0);
+            $('#openlist i').removeClass('el-icon-d-arrow-left');
+            $('#openlist i').addClass('el-icon-d-arrow-right');
+            $('#openlist').attr('title', '收起左侧导航');
+        }
+        return false;
+    }
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                iframeUrl: 'index.html',
+                list: [{
+                        path: "/1",
+                        name: "导航一",
+                        icon: 'el-icon-menu',
+                        children: [{
+                                path: "/1/1",
+                                name: "导航1-1",
+                                icon: 'el-icon-menu',
+                                children: [{
+                                        path: "/1/1/1",
+                                        name: "导航1-1-1",
+                                        icon: 'el-icon-menu',
+                                        url: 'demo1.html'
+                                    },
+                                    {
+                                        path: "/1/1/2",
+                                        name: "导航1-1-2",
+                                        icon: 'el-icon-menu',
+                                        url: 'index.html'
+                                    },
+                                    {
+                                        path: "/1/1/3",
+                                        name: "导航1-1-3",
+                                        icon: 'el-icon-menu',
+                                    }
+                                ]
+                            },
+                            {
+                                path: "/1/2",
+                                name: "导航1-2",
+                                icon: 'el-icon-menu',
+                            }
+                        ]
+                    },
+                    {
+                        path: "/2",
+                        name: "导航二",
+                        icon: 'el-icon-menu'
+                    }
+                ]
+            }
+        },
+        methods: {
+            handleOpen(key, keyPath) {},
+            handleClose(key, keyPath) {},
+            handleSelect(key, keyPath) {},
+            openUrl: function (url) {
+                this.iframeUrl = url;
+            }
+        }
+    })
+</script>
+
+</html>

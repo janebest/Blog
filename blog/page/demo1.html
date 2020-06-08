@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="../public/css/element/index.css">
+
+    <script src="../public/js/jquery-2.1.4.min.js"></script>
+    <script src="../public/js/vue.min.js"></script>
+    <script src="../public/css/element/index.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <el-table ref="testTable" :data="tableData" border>
+            <el-table-column prop="id" label="ID" width="80"></el-table-column>
+            <el-table-column prop="username" label="用户名称" width="120"></el-table-column>
+            <el-table-column prop="post" label="角色" width="120"></el-table-column>
+            <el-table-column prop="department_name" label="部门" width="120"></el-table-column>
+            <el-table-column prop="post_name" label="岗位" width="120"></el-table-column>
+            <el-table-column prop="top" label="直属上级" width="120"></el-table-column>
+            <el-table-column prop="other_department" label="附属部门" width="120"></el-table-column>
+        </el-table>
+        <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage"
+            :page-sizes="[10, 20, 30, 40]" :page-size="10" layout="total, sizes, prev, pager, next, jumper"
+            :total="Number(totalCount)">
+        </el-pagination>
+    </div>
+    <script>
+       var vue = new Vue({
+        el: '#app',
+        data: {
+            //表格当前页数据
+            tableData: [],
+            //默认每页数据量
+            pagesize: 10,
+            //当前页码
+            currentPage: 1,
+
+            //默认数据总数
+            totalCount: 0,
+            //url参数
+            urlParams: {
+                page: 1,
+                limit: 10,
+
+            },
+        },
+
+        computed: {
+            getQueryString: function () {
+                let QueryString = '';
+                for (var i in this.urlParams) {
+                    QueryString += i + "=" + this.urlParams[i] + "&";
+                    console.log(i);
+                    console.log(i,this.urlParams[i]);
+                }
+                console.log(QueryString);
+                return QueryString.slice(0, -1);
+            },
+        },
+        methods: {
+            //从服务器读取数据
+            loadData: function () {
+                let _this = this
+                axios.get('http://pt.linwinz.com/home/index/get_user_list?' + this.getQueryString).then(function (res) {
+                    console.log(res.data);
+                    if (res.data.code == 0) {
+                        _this.tableData = res.data.data;
+                        _this.totalCount = res.data.count;
+                    } else {
+                        return;
+                    }
+                })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            },
+            //每页显示数据量变更
+            handleSizeChange: function (val) {
+                this.urlParams.limit = val;
+                this.loadData();
+            },
+            //页码变更
+            handleCurrentChange: function (val) {
+                this.urlParams.page = val;
+                this.loadData();
+            },
+        },
+        created() {
+            this.loadData();
+        },
+
+    });
+    </script>
+</body>
+
+</html>
