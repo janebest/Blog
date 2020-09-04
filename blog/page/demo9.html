@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../public/css/element/index.css">
+
+  <script src="../public/js/vue.min.js"></script>
+  <script src="../public/css/element/index.js"></script>
+</head>
+<style>
+  li {
+    list-style: none;
+  }
+</style>
+
+<body>
+  <div id="app">
+    <div>
+      <el-input @focus="open" v-model='input_name'></el-input>
+      <el-dialog title="提示" :visible.sync="dialogVisible">
+        <ul>
+          <li v-for='(item,index) in test' :key='index' @click='li_click($event)'>
+            <div>{{item.name}}</div>
+          </li>
+        </ul>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="dialogVisible = false">取 消</el-button>
+          <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+        </span>
+      </el-dialog>
+    </div>
+    <div>
+    
+  </div>
+</body>
+<script>
+  let vm = new Vue({
+    el: '#app',
+    data() {
+      return {
+        input_name: [],
+        test: [{
+          name: 'aa'
+        }, {
+          name: 'bb'
+        }, {
+          name: 'cc'
+        }, ],
+        dialogVisible: false,
+      }
+    },
+    methods: {
+      open1:function(){
+        this.dialogVisible1 = true
+
+      },
+      li_click: function (e) {
+        var data = e.target.innerHTML
+        this.input_name.push(data);
+        this.dialogVisible = false
+      },
+      open: function () {
+        this.input_name = []
+        this.dialogVisible = true
+      }
+    }
+  })
+</script>
+
+</html>

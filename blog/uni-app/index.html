@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <link rel="stylesheet" href="../public/vant/index.css">
+    <link rel="stylesheet" href="css/common.css">
+    <script src="../public/js/vue.min.js"></script>
+    <script src="../public/vant/vant.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <van-nav-bar title="首页"></van-nav-bar>
+        <van-search v-model="value" shape="round" background="#9D7949" placeholder="请输入搜索关键词"></van-search>
+        
+        <!-- 底部按钮 -->
+        <van-tabbar v-model="active" active-color="#9D7949">
+            <van-tabbar-item icon="home-o">首页</van-tabbar-item>
+            <van-tabbar-item icon="search" @click="jump('list.html')">列表</van-tabbar-item>
+            <van-tabbar-item icon="friends-o" @click="jump('mind.html')">我的</van-tabbar-item>
+        </van-tabbar>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                value:'',
+                // 底部按钮切换
+                active: 0,
+            }
+        },
+        methods: {
+            // 底部按钮跳转
+            jump(url) {
+                window.location.href = url;
+            },
+        }
+    })
+</script>
+
+</html>

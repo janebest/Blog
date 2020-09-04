@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../public/css/element/index.css">
+    <script src="../public/js/vue.min.js"></script>
+    <script src="../public/css/element/index.js"></script>
+</head>
+<style>
+    .img_list:hover {
+        -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        transform: scale(1.2);
+        transition: all 1s;
+    }
+
+    .img_list {
+        transition: .5s all;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .img_list img {
+        width: 100%;
+        -webkit-transition: .5s all;
+        -moz-transition: .5s all;
+        transition: .5s all;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <el-row>
+            <el-col :span="6">
+                <div class="img_list"><img src="../images/1-1.jpg" alt=""></div>
+            </el-col>
+            <el-col :span="6">
+                <div class="img_list"><img src="../images/1-2.jpg" alt=""></div>
+            </el-col>
+            <el-col :span="6">
+                <div class="img_list"><img src="../images/1-3.jpg" alt=""></div>
+            </el-col>
+            <el-col :span="6">
+                <div class="img_list"><img src="../images/1-4.jpg" alt=""></div>
+            </el-col>
+            <el-col :span="6">
+                <div class="img_list"><img src="../images/1-5.jpg" alt=""></div>
+            </el-col>
+        </el-row>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data() {
+            return {}
+        }
+    })
+</script>
+
+</html>

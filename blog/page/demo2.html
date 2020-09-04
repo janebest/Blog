@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>vue 练手</title>
     <link rel="stylesheet" href="../public/css/element/index.css">
 
     <script src="../public/js/jquery-2.1.4.min.js"></script>
@@ -11,49 +11,91 @@
     <script src="../public/css/element/index.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
+<style>
+    .yangshi1 {
+        color: blue;
+    }
+
+    .yangshi2 {
+        color: red;
+    }
+</style>
 
 <body>
 
     <div id="app">
-        <el-button @click="upAlert">默认按钮</el-button>
-        <el-button @click="open">默认按钮</el-button>
+        <!-- 切换样式 -->
+        <div v-bind:class="{ yangshi1: ys1 ,yangshi2: ys2}" @click="qiehuan">文字</div>
+        <!-- 过滤器 -->
+        <h1>{{ name | Upper}}</h1>
+        <p> 格式化时间：{{ ctimeStr | formatCtime }} </p>
+        <p>{{ fullName }}</p>
+        <!-- 修改值 -->
+        <input type="text" v-model="inputValue">
+        <button @click="modifyBox">修改box1值</button>
+        <div id="box1" ref="box1">box1</div>
+        <!-- 列表渲染 -->
+        <li v-for="item in items" :key="item.message">
+            {{ item.message }}
+        </li>
+        <li v-for="value in object">
+            {{ value }}
+        </li>
     </div>
     <script>
         var vue = new Vue({
             el: '#app',
             data() {
                 return {
-
+                    ys1: true,
+                    ys2: false,
+                    name: 'vue',
+                    ctimeStr: new Date(),
+                    firstName: 'jack',
+                    lastName: 'rose',
+                    inputValue: '',
+                    items: [{
+                            message: 'Foo'
+                        },
+                        {
+                            message: 'Bar'
+                        }
+                    ],
+                    object: {
+                        title: 'How to do lists in Vue',
+                        author: 'Jane Doe',
+                        publishedAt: '2016-04-10'
+                    },
                 }
             },
-            methods: {
-                upAlert: function () {
-                    this.$message({
-                        message: '登录成功！',
-                        type: 'success',
-                        showClose: true,
-                        duration: 1000
-                    });
+            // created:初始数据的获取,created 钩子函数中调用异步请求
+            // 重新计算开销很大的话,选computed; 不希望有缓存的选methods
+            // vue的计算属性computed默认只有getter,需要使用getter的时候需要自己加一个setter
+            // computed中的属性不能与data中的属性同名，否则会报错
+            methods: { //方法
+                qiehuan() {
+                    this.ys1 = !this.ys1
+                    this.ys2 = !this.ys2
                 },
-                open() {
-                    this.$prompt('请输入邮箱', '提示', {
-                        confirmButtonText: '确定',
-                        cancelButtonText: '取消',
-                        inputPattern: /^1[3456789]\d{9}$/,
-                        inputErrorMessage: '邮箱格式不正确'
-                    }).then(({
-                        value
-                    }) => {
-                        this.$message({
-                            type: 'success',
-                            message: '你的邮箱是: ' + value
-                        });
-                    }).catch(() => {
-                        this.$message({
-                            type: 'info',
-                            message: '取消输入'
-                        });
-                    });
+                modifyBox() {
+                    this.$refs.box1.innerHTML = this.inputValue;
+                },
+            },
+            computed: {
+                fullName() {
+                    return this.firstName + this.lastName
+                }
+            },
+            filters: {
+                Upper: function (value) {
+                    return value.toUpperCase()
+                },
+                formatCtime(dateStr) {
+                    var dt = new Date(dateStr);
+                    var year = dt.getFullYear();
+                    var month = dt.getMonth();
+                    var day = dt.getDate();
+                    return year + '-' + month + '-' + day;
                 }
             }
         });

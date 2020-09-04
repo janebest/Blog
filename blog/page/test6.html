@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Multi-page introduction, Page 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Intro.js - Better introductions for websites and features with a step-by-step guide for your projects.">
+
+    <link href="../public/css/introjs.css" rel="stylesheet">
+    <script type="text/javascript" src="../public/js/intro.js"></script>
+</head>
+
+<body>
+    <div>
+        <div data-step="4" data-intro="Get it, use it.">aaa</div>
+        <div data-step="5" data-intro="Get it, use it.">aaa</div>
+        <div data-step="6" data-intro="Get it, use it.">aaa</div>
+        <div data-step="7" data-intro="Get it, use it.">aaa</div>
+    </div>
+    <script type="text/javascript">
+        if (RegExp('introStart').test(window.location.search)) {
+            introJs().setOptions({
+                //对应的按钮
+                prevLabel: "上一步",
+                nextLabel: "下一步",
+                doneLabel: "完成",
+                skipLabel: "",
+                showStepNumbers: false,
+                showBullets: false,
+                exitOnOverlayClick: true,
+            }).start();
+        }
+    </script>
+</body>
+
+</html>

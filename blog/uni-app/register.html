@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <link rel="stylesheet" href="../public/vant/index.css">
+    <link rel="stylesheet" href="css/common.css">
+    <script src="../public/js/vue.min.js"></script>
+    <script src="../public/vant/vant.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- logo图 标题 -->
+        <div class="register_title text_center">
+            <van-image class="register_headImg" round width="10rem" height="10rem" fit='cover'
+                src="https://img.yzcdn.cn/vant/cat.jpeg"></van-image>
+        </div>
+        <van-form >
+            <van-field v-model="form.username" name="用户名" label="用户名" placeholder="请填写用户名" left-icon="contact"
+                :rules="[{ required: true, message: '请填写用户名' }]"></van-field>
+            <van-field v-model="form.pwd" type="password" name="密码" label="密码" placeholder="请填写密码" left-icon="eye-o"
+                :rules="[{ required: true, message: '请填写密码' }]"></van-field>
+                <van-field v-model="form.repwd" type="password" name="确认密码" label="确认密码" placeholder="请填写确认密码" left-icon="eye-o"
+                :rules="[{ required: true, message: '请填写密码' }]"></van-field>
+            <div style="margin: 16px;">
+                <van-button round block type="info" native-type="submit" color="#9D7949">
+                    提交
+                </van-button>
+            </div>
+        </van-form>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                form: {
+                    username: '',
+                    pwd: '',
+                    repwd:'',
+                }
+            }
+        },
+    })
+</script>
+
+</html>
