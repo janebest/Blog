@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue中css动画的原理</title>
+    <script src="../public/js/vue.min.js"></script>
+    <style>
+        @keyframes bounce {
+            0% {
+                top: 0;
+            }
+
+            50% {
+                top: 2px;
+            }
+
+            100% {
+                top: 5px;
+            }
+        }
+
+        .fade-enter {
+            opacity: 0;
+        }
+
+        .fade-enter-active {
+            transition: opacity 0.2s;
+        }
+
+        .fade-leave-to {
+            opacity: 0;
+        }
+
+        .fade-leave-active {
+            transition: opacity 0.2s;
+            animation: bounce 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+             <transition name="fade">
+            <div v-if="show">+ 1</div>
+        </transition>
+        <button @click="click" style="margin-left:100px">切换</button>
+    </div>
+    <script>
+        var root = new Vue({
+            el: '#root',
+            data: {
+                show: false
+            },
+            methods: {
+                click: function () {
+                    let second = 2;
+                    const timer = setInterval(() => {
+                        second--;
+                        if (second) {
+                            this.show = true;
+                        } else {
+                            clearInterval(timer);
+                            this.show = false;
+                        }
+                    }, 500);
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,6 +1,12 @@
-body{
-    margin: 0px;
-}
+/* css_demo */
+.css_demo1 .nav {position: relative;display: -webkit-box;display: flex;list-style: none;padding: 10px 20px;}
+.css_demo1 .nav a {position: relative;padding: 0.6em 2em;font-size: 20px;border: none;outline: none;color: #222222;display: inline-block;text-decoration: none;text-shadow: 1px 1px 0 #888;z-index: 3;}
+.css_demo1 .nav .slide1,.css_demo1 .nav .slide2 {position: absolute;display: inline-block;height: 0.4em;box-shadow: 1px 1px 0 #666;-webkit-transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1.05);transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1.05);-webkit-transform: skew(-20deg);transform: skew(-20deg);bottom: 0px;height: 100%;}
+.css_demo1 .nav .slide1 {background-color: #0189fa;z-index: 2;}
+.css_demo1 .nav .slide2 {opacity: 0;background-color: transparent;border: 1px solid #0189fa;z-index: 1;}
+
+
+
 .side-title{
     line-height: 60px;
     height: 60px;
