@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../public/vant/index.css">
+    <link rel="stylesheet" href="../public/css/common.css">
+    <script src="../public/js/vue.min.js"></script>
+    <script src="../public/vant/vant.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="food_nav">
+            <van-nav-bar title="首页">
+                <van-icon name="add-o" slot="right" size='22'></van-icon>
+            </van-nav-bar>
+        </div>
+        <div class="food_list f14">
+            <div class="food_list_item bg_white van-hairline--surround border_radius margin_bottom_8"
+                v-for='(item,index) in food_list'>
+                <div class="food_list_item_title">
+                    <van-row>
+                        <van-col span="12">
+                            <van-icon name="shop-o" size='18' class="color_blue food_list_item_title_icon"></van-icon>
+                            <span class="f_bold">{{item.name}}</span>
+                        </van-col>
+                        <van-col span="12" class="text_right">
+                            <template v-if="item.condition == 1">
+                                <van-tag type="primary" plain>开启中</van-tag>
+                            </template>
+                            <template v-else>
+                                <van-tag type="danger" plain>已关闭</van-tag>
+                            </template>
+                    </van-row>
+                </div>
+                <div class="food_list_item_content">
+                    <p class="van-row food_list_item_content_item">
+                        <van-col span="14">
+                            <span>开放：</span><span>{{item.time}}</span>
+                        </van-col>
+                        <van-col span="10">
+                            <span>配送：</span>
+                            <template v-if="item.take == 1">
+                                <span class="color_blue">开启</span>
+                            </template>
+                            <template v-else>
+                                <span class="color_red">关闭</span>
+                            </template>
+                        </van-col>
+                    </p>
+                    <p class="food_list_item_content_item">
+                        <span>管理员：</span>
+                        <span>{{item.menber}}</span>
+                    </p>
+                </div>
+                <div class="food_list_item_edit">
+                    <van-button size="normal">报餐数据</van-button>
+                    <van-button size="normal">管理设置</van-button>
+                </div>
+            </div>
+        </div>
+        <div class="text_center">
+            <p>点击加载更多</p>
+        </div>
+        <!-- 底部按钮 -->
+        <van-tabbar v-model="home_tab">
+            <van-tabbar-item icon="home-o">首页</van-tabbar-item>
+            <van-tabbar-item icon="user-circle-o">我的</van-tabbar-item>
+        </van-tabbar>
+    </div>
+</body>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                home_tab: 0,
+                food_list: [{
+                    name: "食堂11",
+                    condition: 1,
+                    time: "早餐，中餐",
+                    take: 1,
+                    menber:"小张1，小张2"
+                }, {
+                    name: "食堂11",
+                    condition: 2,
+                    time: "早餐，中餐，晚餐",
+                    take: 2,
+                    menber:"小张1"
+                }],
+            }
+        },
+        methods: {}
+    })
+</script>
+
+</html>

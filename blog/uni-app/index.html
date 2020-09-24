@@ -13,11 +13,43 @@
 
 <body>
     <div id="app">
-        <van-nav-bar title="首页"></van-nav-bar>
-        <van-search v-model="value" shape="round" background="#9D7949" placeholder="请输入搜索关键词"></van-search>
-        
+        <div class="van-nav-bar van-hairline--bottom">
+            <div class="van-nav-bar__title van-ellipsis">好物</div>
+            <div class="van-nav-bar__right">
+                <i class="van-icon van-icon-search" style="font-size: 20px;"></i>
+            </div>
+        </div>
+        <van-tabs v-model="tab_active">
+            <van-tab title="首页">
+                <van-swipe class="swiper">
+                    <van-swipe-item v-for="(image, index) in banner_image" :key="index">
+                        <van-image width="100%" height="200px" :src="image" fit="cover"></van-image>
+                    </van-swipe-item>
+                </van-swipe>
+                <div class="bg_white">
+                    <p class="text_center index_title">新品推荐|出口生产商直供</p>
+                    <ul class="index_list">
+                        <li class="text_center">
+                            <div>
+                                <van-image width="120px" height="120px" fit="cover"
+                                    src="https://img.yzcdn.cn/vant/apple-1.jpg" />
+                            </div>
+                            <div>
+                                <p>123</p>
+                                <p>123</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </van-tab>
+            <van-tab title="家居">家居</van-tab>
+            <van-tab title="收纳">收纳</van-tab>
+            <van-tab title="厨具">厨具</van-tab>
+        </van-tabs>
+
         <!-- 底部按钮 -->
-        <van-tabbar v-model="active" active-color="#9D7949">
+        <van-tabbar v-model="bottom_active" active-color="#9D7949">
             <van-tabbar-item icon="home-o">首页</van-tabbar-item>
             <van-tabbar-item icon="search" @click="jump('list.html')">列表</van-tabbar-item>
             <van-tabbar-item icon="friends-o" @click="jump('mind.html')">我的</van-tabbar-item>
@@ -29,9 +61,20 @@
         el: '#app',
         data() {
             return {
-                value:'',
+                index_list:[
+                    {
+                        
+                    }
+                ],
+                banner_image: [
+                    'images/banner_1.jpg',
+                    'images/banner_2.jpg',
+                    'images/banner_3.jpg',
+                ],
+                tab_active: 0,
+                value: '',
                 // 底部按钮切换
-                active: 0,
+                bottom_active: 0,
             }
         },
         methods: {

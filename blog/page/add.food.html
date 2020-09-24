@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../public/vant/index.css">
+    <link rel="stylesheet" href="../public/css/common.css">
+    <script src="../public/js/vue.min.js"></script>
+    <script src="../public/vant/vant.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="food_nav">
+            <van-nav-bar title="添加食堂" left-text="返回" left-arrow @click-left="tab_back"></van-nav-bar>
+            <van-dialog v-model="back_confirm" title="返回确认" show-cancel-button>
+                <div class="van-dialog__content">
+                    <div class="van-dialog__message van-dialog__message--has-title"> 返回后填写的内容将不保存，确认返回？</div>
+                </div>
+            </van-dialog>
+        </div>
+        <div>
+            <van-field v-model="food_form.name" name="食堂名称" label="食堂名称" type="text" placeholder="请输入食堂名称">
+            </van-field>
+            <van-field v-model="food_form.sub" name="食堂备注" label="食堂备注" type="textarea" rows="2" autosize
+                placeholder="清输入食堂备注">
+            </van-field>
+            <van-field v-model="food_form.address" name="食堂地址" label="食堂地址" type="textarea" placeholder="请输入食堂地址"
+                rows="1" autosize></van-field>
+        </div>
+        <div class="f14">
+            <p class="color_yellow food_list_item_title">提示：添加食堂成功后，再进行食堂相关设置</p>
+        </div>
+        <!-- 底部按钮 -->
+        <div class="food_list_item_edit van-tabbar--fixed van-tabbar food_edit_btn">
+            <van-button size="normal" @click="quit">取消</van-button>
+            <van-dialog v-model="quit_confirm" title="取消确认" show-cancel-button>
+                <div class="van-dialog__content">
+                    <div class="van-dialog__message van-dialog__message--has-title"> 取消后填写的内容将不保存，确认取消？</div>
+                </div>
+            </van-dialog>
+            <van-button size="normal" type="info">保存</van-button>
+        </div>
+    </div>
+</body>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                back_confirm: false,
+                quit_confirm: false,
+                food_form: {
+                    name: '',
+                    sub: '',
+                    address: '',
+                }
+            }
+        },
+        methods: {
+            tab_back() {
+                this.back_confirm = true;
+            },
+            quit() {
+                this.quit_confirm = true;
+            },
+        }
+    })
+</script>
+
+</html>

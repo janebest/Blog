@@ -1,6 +1,6 @@
 /* 公共样式 */
-html,body{height: 100%;background-color: #efefef;}
-p{margin: 0;padding: 0;}
+html,body{height: 100%;background-color: #fafafa;}
+p{margin: 0;padding: 0;font-family: 黑体;}
 .text_center{text-align: center;}
 .text_right{text-align: right;}
 .text_left{text-align: left;}
@@ -15,7 +15,7 @@ p{margin: 0;padding: 0;}
 .color_lightGray{color: #999999;}
 .bg_red{background-color: #d43030;}
 .bg_blue{background-color: #1989fa;}
-.bg_yellow{background-color: #ff8d1a;}
+.bg_yellow{background-color: #ffd916;}
 .bg_orange{background-color: #ff5733;}
 .bg_white{background-color: #ffffff;}
 .f26{font-size: 26px;}
@@ -24,9 +24,38 @@ p{margin: 0;padding: 0;}
 .f14{font-size: 14px;}
 .margin_top_5{margin-top: 5px;}
 
+/* vant更改样式 */
+.van-nav-bar__title{    font-family: cursive;font-size: 20px;letter-spacing: 10px;font-weight: bold;}
+.van-nav-bar .van-icon{color: #ffd916;}
+.van-tabs__line,.van-swipe__indicator--active{background-color: #ffd916;}
+.van-swipe__indicators{right: 25px;left: auto;}
+
 /* 注册 */
 .register_title{height: 250px;width: 100%;box-sizing: border-box;overflow: hidden;}
 .register_headImg{margin-top: 30px;}
 .register_loginSign{text-align: right;padding-right: 40px;}
 .register_leftPadding{padding-left: 40px;}
 .register_forgetPwd{padding: 44px 15px 0px;width: 60%;}
+
+/* 首页 */
+.index_title{padding: 15px 0;}
+.index_list{justify-content: space-between;white-space: nowrap;overflow-y: hidden;overflow-x: scroll;display: flex;}
+.index_list li{height: 180px;display: inline-table;margin-right: 20px;padding: 5px 15px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

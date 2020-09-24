@@ -1,0 +1,32 @@
+/*公共样式*/
+*{padding: 0px; margin: 0px;}
+li{list-style: none;}
+p{margin: 0;padding: 0;}
+.color_org{ color: #ff8917}
+.color_red{ color: #ee0a24}
+.color_gray{ color: #999;}
+.color_blue{ color: #409EFF;}
+.color_green{ color: #67C23A;}
+.color_dark_gray{ color: #666666;}
+.color_warning{ color: #E6A23C;}
+.bg_red{background-color: #d43030;}
+.bg_gray{background-color: #999999;}
+.bg_green{background-color: #41b370;}
+.bg_blue{background-color: #1989fa;}
+.bg_yellow{background-color: #ff8d1a;}
+.bg_orange{background-color: #ff5733;}
+.bg_white{background-color: #ffffff;}
+.f14{ font-size: 14px;}
+.f16{ font-size: 16px;}
+.f18{ font-size: 18px;}
+.f20{ font-size: 20px;}
+.f22{ font-size: 22px;}
+.f24{ font-size: 24px;}
+.f26{ font-size: 26px;}
+.f32{ font-size: 32px;}
+.f_bold{ font-weight: bold}
+.t_center{ text-align: center;}
+.t_left{ text-align: left;}
+.t_right{ text-align: right;}
+.f_left{float: left;}
+.f_right{float: right;}
