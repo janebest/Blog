@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>grid - 自适应布局</title>
+</head>
+<style>
+  * {box-sizing: border-box;margin: 0;padding:0;}
+  body {font-family: "Barlow Semi Condensed", sans-serif;background: hsl(210, 46%, 95%);font-size: 18px;}
+  .container {margin: 150px;}
+  .card {border-radius: 15px;padding: 24px;}
+  .card_1 {background-color: hsl(263, 55%, 52%);color: hsl(210, 46%, 95%);grid-area: card-1;}
+  .card_2 {background-color: hsl(217, 19%, 35%);color: white;grid-area: card-2;}
+  .card_3 {background-color: hsl(0, 0%, 100%);color: hsl(217, 19%, 35%);grid-area: card-3;}
+  .card_4 {background-color: hsl(219, 29%, 14%);color: white;grid-area: card-4;}
+  .card_5 {background-color: hsl(0, 0%, 100%);color: hsl(217, 19%, 35%);grid-area: card-5;}
+  @media (max-width: 600px) {
+    .container {display: block;}
+  }
+  @media (max-width: 817px) and (min-width: 600px) {
+    .container {
+      display: grid;
+      grid-template-rows: auto;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas: 
+        "card-1 card-1"
+        "card-2 card-3"
+        "card-4 card-4"
+        "card-5 card-5";
+      grid-gap: 24px;
+    }
+  }
+  @media (max-width: 1166px) and (min-width: 817px) {
+    .container {
+      display: grid;
+      grid-auto-rows: auto;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas:
+        "card-1 card-1 card-2"
+        "card-3 card-4 card-4"
+        "card-5 card-5 card-5";
+      grid-gap: 24px;
+    }
+  }
+  @media screen and (min-width: 1166px) {
+    .container {
+      display: grid;
+      grid-template-rows: auto;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-areas:
+        "card-1 card-1 card-2 card-5"
+        "card-3 card-4 card-4 card-5";
+      grid-gap: 24px;
+    }
+  }
+</style>
+
+<body>
+  <div>
+    <div class="container">
+      <div class="card card_1">
+        <div class="card-body">
+          <p>瀑布图 </p>
+          <p>DNS Lookup [深绿色] - 在浏览器和服务器进行通信之前, 必须经过DNS查询, 将域名转换成IP地址. 在这个阶段, 你可以处理的东西很少. 但幸运的是, 并非所有的请求都需要经过这一阶段.</p>
+          <p>Initial Connection [橙色] - 在浏览器发送请求之前, 必须建立TCP连接. 这个过程仅仅发生在瀑布图中的开头几行, 否则这就是个性能问题(后边细说).</p>
+          <p>SSL/TLS Negotiation [紫色] - 如果你的页面是通过SSL/TLS这类安全协议加载资源, 这段时间就是浏览器建立安全连接的过程. 目前Google将HTTPS作为其 搜索排名因素 之一,</p>
+          <p>Time To First Byte (TTFB) [绿色] - TTFB 是浏览器请求发送到服务器的时间+服务器处理请求时间+响应报文的第一字节到达浏览器的时间.
+            我们用这个指标来判断你的web服务器是否性能不够,</p>
+          <p>Downloading (蓝色) - 这是浏览器用来下载资源所用的时间. 这段时间越长, 说明资源越大. 理想情况下, 你可以通过控制资源的大小来控制这段时间的长度.</p>
+        </div>
+      </div>
+      <div class="card card_2">
+        <div class="card-body">
+          <p>webpack-bundle-analyzer</p>
+          <p>显示包中所有打入的模块</p>
+          <p> 显示模块size 及 gzip后的size</p>
+        </div>
+      </div>
+      <div class="card card_3">
+        <div class="card-body">
+          <p>PerformanceNavigationTiming</p>
+          <p>参数说明</p>
+          <p>navigationStart 加载起始时间
+            redirectStart 重定向开始时间（如果发生了HTTP重定向，每次重定向都和当前文档同域的话，就返回开始重定向的fetchStart的值。其他情况，则返回0）
+            redirectEnd 重定向结束时间（如果发生了HTTP重定向，每次重定向都和当前文档同域的话，就返回最后一次重定向接受完数据的时间。其他情况则返回0）
+            fetchStart 浏览器发起资源请求时，如果有缓存，则返回读取缓存的开始时间
+            unloadEventEnd unload事件执行完的时间</p>
+        </div>
+      </div>
+      <div class="card card_4">
+        <div class="card-body">
+          <p>关于我们的Web性能，我们会用到的时间参数：</p>
+          <p>DNS解析时间： domainLookupEnd - domainLookupStart
+            TCP建立连接时间： connectEnd - connectStart
+            白屏时间： responseStart - navigationStart
+            dom渲染完成时间： domContentLoadedEventEnd - navigationStart
+            页面onload时间： loadEventEnd - navigationStart</p>
+        </div>
+      </div>
+      <div class="card card_5">
+        <div class="card-body">
+          <p>性能测试工具</p>
+          <p>2.7.1 Pingdom</p>
+          <p> 2.7.2 Load Impact</p>
+          <p> 2.7.3 WebPage Test</p>
+          <p> 2.7.4 Octa Gate Site Timer</p>
+          <p>2.7.5 Free Speed Test</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

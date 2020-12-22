@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Insure landing page</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="./styles.css">
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Karla", sans-serif;
+    background-color: rgba(0,0,0,0.1);
+}
+.supreme-container{
+    background-color: white;
+    min-height: 100vh;
+    height: auto;
+    position: relative;
+    padding-bottom: max(35px, 4vh);
+}
+nav{
+    height: max(7vh, 67px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8vw;
+}
+.menu-button{
+    display: none;
+}
+.nav-menu-mobile{
+    display: none;
+}
+.inner-nav-container{
+    width: 30%;
+    min-width: 415px;
+    /*background-color: rgba(0,0,0,0.1);*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.inner-nav-container > a{
+    text-decoration: none;
+    font-family: "Karla", sans-serif;
+    color: hsl(273, 4%, 51%);
+    font-size: 14px;
+    font-weight: 700;
+    transition: all 0.2s ease-in;
+}
+.inner-nav-container > a:hover{
+    color: hsl(256, 26%, 20%);
+}
+.button{
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    font-weight: 700;
+}
+#nav-button{
+    border: 2px solid hsl(270, 9%, 17%);
+    color: hsl(270, 9%, 17%);
+    transition: all 0.2s ease-in;
+}
+#nav-button:hover{
+    background-color: hsl(256, 26%, 20%);
+    color: white
+}
+.mobile-family-bg{
+    display: none;
+}
+.bg-right-mobile{
+    display: none;
+}
+.upper-section{
+    background-color: hsl(256, 26%, 20%);
+    position: relative;
+    overflow: hidden;
+    height: 62vh;
+    min-height: 590px;
+}
+.upper-section-content{
+    width: 40%;
+    color: white;
+    margin: 15vh 0 0 10vw;
+    /*background-color: rgba(0,0,0,0.1);*/
+    min-height: 360px;
+    min-width: 540px;
+}
+.big-header{
+    font-size: 4rem;
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+}
+.upper-section-header{
+    /*background-color: rgba(0,0,0,0.1);*/
+    width: 65%;
+    min-width: 444px;
+    margin-bottom: 2vh;
+}
+.upper-section-text{
+    width: 80%;
+    min-width: 533px;
+    line-height: 1.8rem;
+    opacity: 0.8;
+    margin-bottom: 4vh;
+}
+.body-button{
+    color: white;
+    border: 2px solid white;
+    transition: all 0.2s ease-in;
+    font-size: 14px;
+}
+.body-button:hover{
+    background-color: white;
+    color: hsl(256, 26%, 20%);
+}
+.bg-top-right{
+    position: absolute;
+    top: -5rem;
+    right: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+.bg-img-section{
+    position: relative;
+    pointer-events: none;
+}
+.family-photo{
+    position: absolute;
+    top: -31rem;
+    right: 10vw;
+    width: 28vw;
+    min-width: 450px;
+}
+.bg-top-left{
+    position: absolute;
+    top: -10rem;
+    left: 0;
+}
+.middle-section{
+    min-height: 130vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0 10vw;
+}
+.middle-section-header{
+    align-self: flex-start;
+    margin-top: 25vh;
+}
+.middle-card-container{
+    min-height: 240px;
+    height: 25vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.middle-card{
+    width: 25%;
+    /*background-color: rgba(0,0,0,0.1);*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.middle-card-heading{
+    font-family: "DM Serif Display", serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-top: 1rem;
+}
+.middle-card-text{
+    line-height: 1.6rem;
+    color: hsl(273, 4%, 51%);
+    margin-bottom: 1rem;
+}
+.middle-section-banner{
+    min-height: 240px;
+    height: 25vh;
+    width: 100%;
+    background-color: hsl(256, 26%, 20%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 max(4vw, 40px);
+    background-image: url("./images/bg-pattern-how-we-work-desktop.svg");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.banner-header{
+    /*background-color: rgba(0,0,0,0.1);*/
+    color: white;
+    width: 42%;
+    min-width: 580px;
+}
+footer{
+    background-image: url("./images/bg-pattern-footer-desktop.svg");
+    background-repeat: no-repeat;
+    background-color: hsl(0, 0%, 98%);
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0 10vw;
+    padding-bottom: max(3vh, 25px);
+}
+.upper-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid hsl(220, 12%, 85%);
+    padding-bottom: max(2vh, 15px);
+    padding-top: max(2vh, 15px);
+}
+.social-container{
+    /*background-color: rgba(0,0,0,0.1);*/
+    width: 10%;
+    min-width: 140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fb-icon{
+    mask: url("./images/icon-facebook.svg");
+}
+.twt-icon{
+    mask: url("./images/icon-twitter.svg");
+}
+.pin-icon{
+    mask: url("./images/icon-pinterest.svg");
+}
+.insta-icon{
+    mask: url("./images/icon-instagram.svg");
+}
+.icon{
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+    background-color: hsl(273, 4%, 51%);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    transition: all 0.2s ease-out;
+}
+.icon:hover{
+    background-color: hsl(256, 26%, 20%);
+}
+.lower-footer{
+    display: flex;
+    justify-content: space-between;
+    /*background-color: rgba(0,0,0,0.1);*/
+    min-height: 25vh;
+    margin-top: max(2vh, 15px);
+}
+.lower-footer-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.footer-small-header{
+    margin-bottom: 2vh;
+    font-size: 1rem;
+    color: hsl(273, 4%, 51%);
+}
+.lower-footer-div > a{
+    margin-top: max(1vh, 9px);
+    text-decoration: none;
+    color: hsl(270, 9%, 17%);
+    font-weight: 700;
+}
+.lower-footer-div > a:hover{
+    text-decoration: underline;
+}
+
+
+.attribution{
+    position: absolute;
+    bottom: 1vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.attribution a{
+    text-decoration: none;
+    transition: color 0.2s ease-in;
+}
+.attribution a:hover{
+    color: rgb(34, 104, 34);
+}
+
+
+@media(max-width: 1267px)
+{
+    .upper-section-content{
+        margin-left: calc(115px - 5 * (125px - 10vw));
+    }
+    .family-photo{
+        right: calc(115px - 5 * (125px - 10vw));
+    }
+    .middle-card{
+        width: 30%;
+    }
+}
+@media(max-width: 1050px)
+{
+    .supreme-container{
+        width: 630px;
+        min-width: 375px;
+        margin: 0 auto;
+        padding-bottom: 3rem;
+    }
+    .menu-button{
+        display: block;
+        cursor: pointer;
+    }
+    .inner-nav-container{
+        display: none;
+    }
+    .nav-menu-mobile{
+        width: 100%;
+        background-color: hsl(270, 9%, 17%);
+        background-image: url("./images/bg-pattern-mobile-nav.svg");
+        background-repeat: no-repeat;
+        background-position: bottom;
+        background-size: contain;
+        display: flex;      /* use display flex to show the mobile nav*/
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        position: absolute;
+        top: 7vh;
+        padding-top: 2vh;
+        min-height: 50vh;
+        z-index: 3;
+        transition: all 0.3s ease-in-out;
+        transform: translateY(-10px);
+        opacity: 0;
+        pointer-events: none;
+    }
+    .nav-menu-mobile.show{
+        transform: translateY(0px);
+        opacity: 1;
+        pointer-events: all;
+    }
+    .nav-menu-mobile > a{
+        color: white;
+        text-decoration: none;
+        margin: 1vh 0;
+    }
+    .family-photo, .bg-top-right, .bg-top-left, .bg-img-section{
+        display: none;
+    }
+    .mobile-family-bg{
+        display: block;
+        background-image: url("./images/image-intro-mobile.jpg");
+        height: max(40vh, 300px);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 0% 40%;
+    }
+    .bg-right-mobile{
+        display: block;
+    }
+    .big-header{
+        font-size: 3rem;
+    }
+    .upper-section{
+        background-image: url("./images/bg-pattern-intro-left-mobile.svg");
+        background-repeat: no-repeat;
+        padding-left: max(2vw, 18px);
+        padding-right: max(2vw, 18px);
+        height: auto;
+        min-height: 0;
+        padding-bottom: max(2vh, 18px);
+        position: relative;
+    }
+    .upper-section-content{
+        width: 100%;
+        height: 70%;
+        min-width: 0;
+        margin: 36px 0 0 0;
+    }
+    .upper-section-header{
+        width: 100%;
+        min-width: 0;
+        text-align: center;
+        margin-bottom: max(2vh, 15px);
+    }
+    .upper-section-text{
+        width: 100%;
+        min-width: 0;
+        text-align: center;
+        margin-bottom: max(3vh, 25px);
+    }
+    .first-button{
+        display: block;
+        width: 133px;
+        margin: 0 auto;
+    }
+    .bg-right-mobile{
+        position: absolute;
+        right: 0;
+        top: -9rem;
+        pointer-events: none;
+    }
+    .middle-section{
+        position: relative;
+        padding-right: max(2vw, 20px);
+        padding-left: max(2vw, 20px);
+        padding-top: max(5vh, 45px);
+        padding-bottom: max(5vh, 45px);
+    }
+    .middle-section-header{
+        align-self: center;
+        margin-top: 3vh;
+    }
+    .middle-card-container{
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+    }
+    .middle-card{
+        width: 100%;
+        margin-top: max(2vh, 18px);
+        margin-bottom: max(2vh, 18px);
+        align-items: center;
+    }
+    .middle-card-heading{
+        margin-bottom: max(1vh, 9px);
+    }
+    .middle-card-text{
+        text-align: center;
+    }
+    .middle-section-banner{
+        height: auto;
+        margin-top: max(4vh, 32px);
+        margin-bottom: max(3vh, 25px);
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: max(3vh, 25px);
+        padding-top: max(3vh, 25px);
+        width: 100%;
+        min-width: 0;
+        flex-direction: column;
+        justify-content: space-evenly;
+        background-image: url("./images/bg-pattern-how-we-work-mobile.svg");
+        background-position: top right;
+    }
+    .banner-header{
+        width: 100%;
+        min-width: 0;
+        text-align: center;
+        margin-bottom: max(24px, 3vh);
+    }
+    footer{
+        background-image: url("./images/bg-pattern-footer-mobile.svg");
+        background-size: contain;
+    }
+    .upper-footer{
+        flex-direction: column;
+        padding-top: max(3vh, 20px);
+        padding-bottom: max(3vh, 20px);
+    }
+    .social-container{
+        margin-top: max(2vh, 15px);
+    }
+    .lower-footer{
+        flex-direction: column;
+        align-items: center;
+        margin-top: max(3vh, 20px);
+    }
+    .lower-footer-div{
+        text-align: center;
+        margin-top: max(1.5vh, 12px);
+        margin-bottom: max(1.5vh, 12px);
+    }
+    .lower-footer-div > a{
+        margin: 1.2vh 0;
+    }
+}
+@media(max-width: 700px)
+{
+    .supreme-container{
+        width: 90%;
+    }
+}
+  </style>
+</head>
+<body>
+  <div class="supreme-container">
+    <nav class="main-nav">
+      <img src="./images/logo.svg" alt="logo" class="logo">
+      <div class="inner-nav-container">
+        <a href="#">HOW WE WORK</a>
+        <a href="#">BLOG</a>
+        <a href="#">ACCOUNT</a>
+        <a href="#" class="button" id="nav-button">VIEW PLANS</a>
+      </div> 
+      <div class="menu-button"><img src="./images/icon-hamburger.svg"></div>
+    </nav>
+
+    <div class="nav-menu-mobile">
+        <a href="#">HOW WE WORK</a>
+        <a href="#">BLOG</a>
+        <a href="#">ACCOUNT</a>
+        <a href="#" class="button body-button">VIEW PLANS</a>
+    </div>
+
+    <div class="mobile-family-bg"></div>
+
+  <section class="upper-section">
+    <div class="upper-section-content">
+      <h1 class="big-header upper-section-header">Humanizing your insurance.</h1>
+
+      <p class="upper-section-text">Get your life insurance coverage easier and faster. We blend our expertise 
+      and technology to help you find the plan that’s right for you. Ensure you 
+      and your loved ones are protected.</p>
+
+      <a href="#" class="first-button body-button button">VIEW PLANS</a>
+    </div>
+    
+    
+    <img src="./images/bg-pattern-intro-right-desktop.svg" alt="bg thingy" class="bg-top-right">
+    
+  </section>
+  
+  <section class="bg-img-section">
+    <img src="./images/image-intro-desktop.jpg" alt="family photo" class="family-photo">
+    <img src="./images/bg-pattern-intro-left-desktop.svg" alt="" class="bg-top-left">
+  </section>
+
+  <section class="middle-section">
+    <img src="./images/bg-pattern-intro-right-mobile.svg" class="bg-right-mobile" alt="bg thingy">
+    <h1 class="big-header middle-section-header">We’re different</h1>
+
+    <div class="middle-card-container">
+      <div class="middle-card process">
+        <img src="./images/icon-snappy-process.svg" alt="icon thinge">
+        <h3 class="middle-card-heading">Snappy Process</h3>
+  
+        <p class="middle-card-text">Our application process can be completed in minutes, not hours. Don’t get 
+          stuck filling in tedious forms.</p>
+      </div>
+  
+      <div class="middle-card prices">
+        <img src="./images/icon-affordable-prices.svg" alt="icon thingy">
+        <h3 class="middle-card-heading">Affordable Prices</h3>
+  
+        <p class="middle-card-text">We don’t want you worrying about high monthly costs. Our prices may be low, 
+          but we still offer the best coverage possible.</p>
+      </div>
+      
+      <div class="middle-card people">
+        <img src="./images/icon-people-first.svg" alt="icon thing">
+        <h3 class="middle-card-heading">People First</h3>
+  
+        <p class="middle-card-text">Our plans aren’t full of conditions and clauses to prevent payouts. We make 
+          sure you’re covered when you need it.</p>
+      </div>
+    </div>
+    
+    <div class="middle-section-banner">
+      <h2 class="big-header banner-header">Find out more about how we work</h2>
+
+      <a href="#" class="button body-button">HOW WE WORK</a>
+    </div>
+  </section>
+  
+  <footer>
+    <div class="upper-footer">
+      <img src="./images/logo.svg" alt="logo" class="logo">
+      <div class="social-container">
+        <a href="#"><span class="fb-icon icon"></span></a>
+        <a href="#"><span class="twt-icon icon"></span></a>
+        <a href="#"><span class="pin-icon icon"></span></a>
+        <a href="#"><span class="insta-icon icon"></span></a>
+      </div>
+    </div>
+    <div class="lower-footer">
+      <div class="lower-footer-div our-company-list">
+        <h6 class="footer-small-header">OUR COMPANY</h6>
+        <a href="#">HOW WE WORK</a>
+        <a href="#">WHY INSURE?</a>
+        <a href="#">VIEW PLANS</a>
+        <a href="#">REVIEWS</a>
+      </div>
+  
+      <div class="lower-footer-div help-me-list">
+        <h6 class="footer-small-header">HELP ME</h6>
+        <a href="#">FAQ</a>
+        <a href="#">TERMS OF USE</a>
+        <a href="#">PRIVACY POLICY</a>
+        <a href="#">COOKIES</a>
+      </div>
+  
+      <div class="lower-footer-div contact-list">
+        <h6 class="footer-small-header">CONTACT</h6>
+        <a href="#">SALES</a>
+        <a href="#">SUPPORT</a>
+        <a href="#">LIVE CHAT</a>
+      </div>
+  
+      <div class="lower-footer-div others-list">
+        <h6 class="footer-small-header">OTHERS</h6>
+        <a href="#">CAREERS</a>
+        <a href="#">PRESS</a>
+        <a href="#">LICENSES</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</body>
+<script>
+    const mobileNav = document.querySelector(".nav-menu-mobile");
+const btnNav = document.querySelector(".menu-button");
+
+btnNav.addEventListener("click", function(){
+    mobileNav.classList.toggle("show");
+})
+</script>
+</html>

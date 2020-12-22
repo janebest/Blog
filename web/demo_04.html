@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../public/fontawesome-free-5.11.2-web/css/all.css">
+</head>
+<style>
+    :root {
+  --dark-blue-intro-sign: hsl(217, 28%, 15%);
+  --dark-blue-bg: hsl(218, 28%, 13%);
+  --dark-blue-footer-bg: hsl(216, 53%, 9%);
+  --dark-blue-testi-bg: hsl(219, 30%, 18%);
+  --cyan: hsl(176, 68%, 64%);
+  --blue: hsl(198, 60%, 50%);
+  --red: hsl(0, 100%, 63%);
+  --white: hsl(0, 0%, 100%);
+  --white-transparent: hsl(0, 0%, 100%, 0.7);
+  --gradient-bg: linear-gradient(90deg, var(--cyan) 0%, var(--blue) 100%);
+}
+
+@font-face {
+  font-family: Raleway;
+  src: url(./fonts/Raleway-Regular.ttf);
+}
+@font-face {
+  font-family: RalewayBold;
+  src: url(./fonts/Raleway-Bold.ttf);
+}
+
+@font-face {
+  font-family: OpenSans;
+  src: url(./fonts/OpenSans-Regular.ttf);
+}
+
+/* Start Global Style */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 12px;
+  font-family: OpenSans;
+  font-weight: 400;
+  background-color: var(--dark-blue-bg);
+  color: var(--white);
+}
+
+img {
+  width: 100%;
+}
+
+a,
+p {
+  color: var(--white-transparent);
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+nav .container ul li a {
+  font-family: Raleway;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3 {
+  font-family: RalewayBold;
+}
+
+p {
+  font-size: 1em;
+}
+
+h1 {
+  font-size: 1.7em;
+}
+
+h2 {
+  font-size: 1.3em;
+}
+
+.btn {
+  border: none;
+  font-family: RalewayBold;
+  color: var(--white);
+  background: var(--gradient-bg);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--cyan);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* End Global Style */
+
+/* Start Nav Style */
+nav {
+  background-color: var(--dark-blue-intro-sign);
+  padding: 20px 1.6em 0 1.6em;
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav .container .header img {
+  width: 5em;
+}
+
+nav .container ul {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+nav .container ul li a {
+  font-size: 0.8em;
+}
+
+nav .container ul li a:hover {
+  color: var(--white);
+  transition: ease all 0.2s;
+  border-bottom: 1px solid var(--white);
+}
+/* End Nav Style */
+
+/* Start Hero Style */
+#hero {
+  padding: 40px 2em 0 2em;
+  text-align: center;
+  background-color: var(--dark-blue-intro-sign);
+  /* background-image: url(./images/bg-curvy-mobile.svg); */
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: bottom;
+  height: 27em;
+}
+
+#hero .container .hero-content {
+  margin-top: 2em;
+}
+
+#hero .container .hero-content h1 {
+  line-height: 40px;
+  /* word-spacing: 10px; */
+}
+
+#hero .container .hero-content p {
+  margin: 20px 0 15px 0;
+}
+
+#hero .container .hero-content .hero-btn {
+  width: 70%;
+  padding: 15px;
+  border-radius: 50px;
+}
+/* End Hero Style */
+
+/* Start Features Style */
+#features {
+  /* margin-top: 25em; */
+  padding: 300px 2em 0 2em;
+  text-align: center;
+}
+
+#features .container .cards {
+  display: grid;
+  gap: 100px;
+}
+
+#features .container .cards .card {
+  display: grid;
+  gap: 30px;
+  justify-items: center;
+  grid-template-rows: auto 1fr;
+}
+
+#features .container .cards .card img {
+  height: 4em;
+  width: 4em;
+  align-self: end;
+}
+
+#features .container .cards .card .card-content h2 {
+  margin-bottom: 10px;
+}
+/* End Features Style */
+
+/* Start Stay Productive Style */
+#works {
+  margin-top: 150px;
+  padding: 40px 2em 0 2em;
+}
+
+#works .container {
+  display: grid;
+  gap: 40px;
+}
+
+#works .container .works-content {
+  display: grid;
+  gap: 20px;
+  grid-auto-rows: minmax(min-content, max-content);
+}
+
+#works .container .works-content a {
+  color: var(--cyan);
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1.5px solid var(--cyan);
+  padding-bottom: 5px;
+  max-width: 11em;
+  width: 100%;
+}
+
+#works .container .works-content a:hover {
+  color: white;
+  
+}
+
+#works .container .works-content a img {
+  width: 1em;
+}
+/* End Stay Productive Style */
+
+/* Start Team Style */
+#team {
+  padding: 0 3.5em;
+  margin-top: 150px;
+}
+
+#team .container .quotes {
+  width: 1.5em;
+  position: relative;
+  bottom: -4px;
+  right: -10px;
+}
+
+#team .container .team-cards {
+  display: grid;
+  gap: 20px;
+}
+
+#team .container .team-cards .team-card {
+  background-color: var(--dark-blue-testi-bg);
+  padding: 25px 20px 20px 20px;
+  border-radius: 5px;
+  font-size: 0.8em;
+  display: grid;
+  gap: 15px;
+}
+
+#team .container .team-cards .team-card .profile {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#team .container .team-cards .team-card .profile img {
+  width: 30px;
+  border-radius: 50%;
+}
+/* End Team Style */
+
+/* Start Banner Style */
+#banner {
+  padding: 0 1em;
+  text-align: center;
+  position: relative;
+  bottom: -150px;
+}
+#banner .container {
+  padding: 30px 25px 25px 25px;
+  background-color: var(--dark-blue-intro-sign);
+  border-radius: 7px;
+  display: grid;
+  gap: 20px;
+}
+
+#banner .container .banner-form {
+  display: grid;
+  gap: 20px;
+}
+
+#banner .container .banner-form input {
+  padding: 10px;
+  border-radius: 50px;
+  border: none;
+}
+
+#banner .container .banner-form .input-text::placeholder {
+  color: rgb(196, 196, 196);
+  font-size: 10px;
+  padding-left: 20px;
+}
+
+#banner .container .banner-form .input-submit {
+  font-size: 12px;
+}
+/* End Banner Style */
+
+/* Start Footer Style */
+footer {
+  padding: 18em 2em 5em 2em;
+  background-color: var(--dark-blue-footer-bg);
+}
+
+footer .container .logo-footer {
+  width: 12em;
+}
+
+footer .container .footer-content-wrap {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+footer .container .footer-content-wrap .address {
+  max-width: 400px;
+}
+
+footer .container .wrap-grid {
+  display: grid;
+  gap: 15px;
+}
+
+footer .container .footer-content-wrap .item-flex {
+  display: flex;
+  gap: 20px;
+}
+
+footer .container .footer-content-wrap .item-flex img {
+  width: 1.2em;
+  height: 1.3em;
+}
+
+footer .container ul {
+  margin-top: 30px;
+}
+
+footer .container ul li a:hover {
+  color: var(--white);
+}
+
+footer .container .sosmeds-link {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+footer .container .sosmeds-link a {
+  border: 1px solid white;
+  text-align: center;
+  line-height: 1px;
+  vertical-align: middle;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.attribution {
+  background-color: var(--dark-blue-footer-bg);
+  text-align: center;
+}
+.attribution a:hover {
+  color: white;
+}
+/* End Footer Style */
+
+@media screen and (min-width: 375px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 481px) {
+  body {
+    font-size: 16px;
+  }
+
+  #works {
+    padding: 40px 4em 0 4em;
+  }
+
+  #hero {
+    height: 30em;
+    padding: 40px 4em 0 4em;
+  }
+
+  #features {
+    padding: 300px 3em 0 3em;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+
+  #works {
+    padding: 40px 11em 0 11em;
+  }
+
+  #hero {
+    height: 50em;
+    padding: 40px 11em 0 11em;
+    /* background-image: url(./images/bg-curvy-desktop.svg); */
+    max-height: 1440px;
+    margin: 0 auto;
+  }
+
+  #features {
+    padding: 5em 9em 0 9em;
+  }
+
+  #features .container .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #works .container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #team .container .team-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  #banner {
+    padding: 0 4em;
+  }
+
+  #banner .container .banner-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #banner .container .banner-form input {
+    padding: 10px;
+  }
+
+  footer .container .footer-content-wrap {
+    align-items: start;
+    justify-items: end;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .sosmeds-link {
+    justify-self: center;
+  }
+
+  footer .container ul {
+    margin-top: 0;
+  }
+
+  footer .container .sosmeds-link {
+    justify-content: start;
+  }
+}
+
+@media screen and (min-width: 1125px) {
+  body {
+    font-size: 18px;
+  }
+
+  nav {
+    padding: 60px 5em 0 5em;
+  }
+  
+  #hero {
+    height: 900px;
+    padding: 100px 25em 0 25em;
+  }
+
+  #hero .container .hero-content .hero-btn {
+    width: 50%;
+  }
+
+  #features {
+    padding: 5em 20em 0 20em;
+  }
+
+  #works .container {
+    align-items: center;
+  }
+
+  #team {
+    padding: 0 11em;
+  }
+
+  #team .container .quotes {
+    width: 2.5em;
+    bottom: -10px;
+    right: 5px;
+    z-index: -1;
+  }
+
+  #banner {
+    padding: 0 15em;
+  }
+
+  footer {
+    padding: 18em 5em 5em 5em;
+  }
+}
+
+</style>
+<body>
+    <nav>
+      <div class="container">
+        <div class="header">
+          <img src="./images/logo.svg" alt="Logo Fylo">
+        </div>
+        <ul>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Team</a></li>
+          <li><a href="#">Sign In</a></li>
+        </ul>
+      </div>
+    </nav>
+  
+    <section id="hero">
+      <div class="container">
+        <img src="./images/illustration-intro.png" alt="Hero Image">
+        <div class="hero-content">
+          <h1>All your files in one secure location, accessible anywhere.</h1>
+          <p>Fylo stores all your most important files in one secure location. Access them wherever
+            you need, share and collaborate with friends family, and co-workers.</p>
+          <button class="hero-btn btn">Get Started</button>
+        </div>
+      </div>
+    </section>
+  
+    <section id="features">
+      <div class="container">
+        <div class="cards">
+          <div class="card">
+            <img src="./images/icon-access-anywhere.svg" alt="Icon Access Anywhere">
+            <div class="card-content">
+              <h2>Access your files, anywhere</h2>
+              <p>The ability to use a smartphone, tablet, or computer to access your account means your
+                files follow you everywhere.</p>
+            </div>
+          </div>
+          <div class="card">
+            <img src="./images/icon-security.svg" alt="Icon Security">
+            <div class="card-content">
+              <h2>Security you can trust</h2>
+              <p>2-factor authentication and user-controlled encryption are just a couple of the security
+                features we allow to help secure your files.</p>
+            </div>
+          </div>
+          <div class="card">
+            <img src="./images/icon-collaboration.svg" alt="Icon Collaboration">
+            <div class="card-content">
+              <h2>Real-time collaboration</h2>
+              <p>Securely share files and folders with friends, family and colleagues for live collaboration.
+                No email attachments required.</p>
+            </div>
+          </div>
+          <div class="card">
+            <img src="./images/icon-any-file.svg" alt="Icon Any File">
+            <div class="card-content">
+              <h2>Store any type of file</h2>
+              <p>Whether you're sharing holidays photos or work documents, Fylo has you covered allowing for all
+                file types to be securely stored and shared.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section id="works">
+      <div class="container">
+        <img src="./images/illustration-stay-productive.png" alt="Stay Productive">
+        <div class="works-content">
+          <h2>Stay productive, wherever you are</h2>
+          <p>Never let location be an issue when accessing your files. Fylo has you covered for all of your file
+            storage needs.</p>
+          <p>Securely share files and folders with friends, family and colleagues for live collaboration. No email
+            attachments required.</p>
+          <a href="#">See how Fylo works <img src="./images/icon-arrow.svg" alt="arrow"></a>
+        </div>
+      </div>
+    </section>
+  
+    <section id="team">
+      <div class="container">
+        <img src="./images/bg-quotes.png" alt="Quotes Icon" class="quotes">
+        <div class="team-cards">
+          <div class="team-card">
+            <p>Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has
+              become a well-oiled collaboration machine.</p>
+            <div class="profile">
+              <img src="./images/profile-1.jpg" alt="Photo Profile">
+              <div class="detail-profile">
+                <h3>Satish Patel</h3>
+                <p>Founder & CEO, Huddle</p>
+              </div>
+            </div>
+          </div>
+          <div class="team-card">
+            <p>Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has
+              become a well-oiled collaboration machine.</p>
+            <div class="profile">
+              <img src="./images/profile-2.jpg" alt="Photo Profile">
+              <div class="detail-profile">
+                <h3>Bruce McKenzie</h3>
+                <p>Founder & CEO, Huddle</p>
+              </div>
+            </div>
+          </div>
+          <div class="team-card">
+            <p>Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has
+              become a well-oiled collaboration machine.</p>
+            <div class="profile">
+              <img src="./images/profile-3.jpg" alt="Photo Profile">
+              <div class="detail-profile">
+                <h3>Iva Boyd</h3>
+                <p>Founder & CEO, Huddle</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section id="banner">
+      <div class="container">
+        <h2>Get early access today</h2>
+        <p>It only takes a minute to sign up and our free starter tier is extremely generous. If you have any
+          questions, our support team would be happy to help you.</p>
+        <form action="" class="banner-form">
+          <input class="input-text" type="text" placeholder="email@example.com">
+          <input class="input-submit btn" type="submit" value="Get Started For Free">
+        </form>
+      </div>
+    </section>
+  
+    <footer>
+      <div class="container">
+        <img class="logo-footer" src="./images/logo.svg" alt="Logo Icon">
+        <div class="footer-content-wrap">
+          <div class="address item-flex">
+            <img src="./images/icon-location.svg" alt="Location">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua</p>
+          </div>
+          <div class="phone-email-wrap wrap-grid">
+            <div class="phone item-flex">
+              <img src="./images/icon-phone.svg" alt="Phone Icon">
+              <p>+1-543-123-4567</p>
+            </div>
+            <div class="email item-flex">
+              <img src="./images/icon-email.svg" alt="Email Icon">
+              <p>example@fylo.com</p>
+            </div>
+          </div>
+          <ul class="first-link wrap-grid">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Jobs</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+          <ul class="second-link wrap-grid">
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Privacy</a></li>
+          </ul>
+          <ul class="sosmeds-link">
+            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <p class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="https://github.com/hisatt" target="_blank">hisatt</a>.
+    </p>
+  </body>
+</html>

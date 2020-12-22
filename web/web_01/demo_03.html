@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+  <link rel="stylesheet" href="css/style.css">
+  <title>pc端，移动端自适应</title>
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="images/logo-bookmark.svg" alt="logo">
+      </div>
+      <ul class="nav-links">
+        <li><a href="#section-2" class="links nav-link">特色</a></li>
+        <li><a href="#section-3" class="links nav-link">价格</a></li>
+        <li><a href="#section-5" class="links nav-link">联系</a></li>
+        <li><a href="#section-5" class="login nav-link">登录</a></li>
+      </ul>
+      <div class="menu">
+        <div class="line-1"></div>
+        <div class="line-2"></div>
+        <div class="line-3"></div>
+      </div>
+    </nav>
+  </header>
+  <section class="bookmark section" id="section-1">
+    <div class="bookmark-intro">
+      <h1 class="main-heading">简单快速方便快捷</h1>
+      <p class="paragraph"> 使用教程使用教程使用教程使用教程使用教程使用教程使用教程使用教程</p>
+      <div class="main-buttons">
+        <button class="chrome">使用Chrome</button>
+        <button class="firefox">使用Firefox</button>
+      </div>
+    </div>
+    <div class="bookmark-hero">
+      <div class="bookmark-box">
+        <img src="images/bg-bookmark.svg" alt="bookmark" class="bookmark-img">
+      </div>
+    </div>
+  </section>
+  <section class="features section" id="section-2">
+    <div class="features-heading">
+      <h2 class="second-heading">特色</h2>
+      <p class="paragraph">我们的特色我们的特色我们的特色我们的特色我们的特色</p>
+    </div>
+    <div class="feature-tabs">
+      <div class="features-links">
+        <ul>
+          <li><a href="" class="feature-link feature-link-1 active" data-link="1">简单</a></li>
+          <li><a href="" class="feature-link feature-link-2" data-link="2">快速</a></li>
+          <li><a href="" class="feature-link feature-link-3" data-link="3">便捷</a></li>
+        </ul>
+      </div>
+      <div class="tab tab-1  tab-active">
+        <div class="tab-left">
+          <img src="images/illustration-features-tab-1.svg" alt="illustration" class="tab-img">
+          <img src="images/bg-features.svg" alt="" class="feature">
+        </div>
+        <div class="tab-right">
+          <h2 class="second-heading">点击</h2>
+          <p class="paragraph">点击点击点击点击点击点击点击</p>
+          <div class="info-box">
+            <button class="info">更多信息</button>
+          </div>
+        </div>
+      </div>
+      <div class="tab tab-2 none">
+        <div class="tab-left">
+          <img src="images/illustration-features-tab-2.svg" alt="illustartion" class="tab-img">
+          <img src="images/bg-features.svg" alt="" class="feature">
+        </div>
+        <div class="tab-right">
+          <h2 class="second-heading">搜索</h2>
+          <p class="paragraph">搜索搜索搜索搜索搜索</p>
+          <div class="info-box">
+            <button class="info">更多信息</button>
+          </div>
+        </div>
+      </div>
+      <div class="tab tab-3 none">
+        <div class="tab-left">
+          <img src="images/illustration-features-tab-3.svg" alt="illustration" class="tab-img">
+          <img src="images/bg-features.svg" alt="" class="feature">
+        </div>
+        <div class="tab-right">
+          <h2 class="second-heading">分享</h2>
+          <p class="paragraph">分享分享分享分享分享分享分享</p>
+          <div class="info-box">
+            <button class="info">更多信息</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="extensions section" id="section-3">
+    <div class="extension-headings">
+      <h2 class="second-heading">下载安装</h2>
+      <p class="paragraph">下载安装下载安装下载安装下载安装下载安装</p>
+    </div>
+    <div class="extension-box">
+      <div class="extension">
+        <img src="images/logo-chrome.svg" alt="chrome" class="icon">
+        <h3 class="third-heading">Chrome</h3>
+        <p class="paragraph">Minimum version 62</p>
+        <button class="extension-btn">下载安装</button>
+      </div>
+      <div class="extension browser2">
+        <img src="images/logo-firefox.svg" alt="firefox" class="icon">
+        <h3 class="third-heading">Firefox</h3>
+        <p class="paragraph">Minimum version 55</p>
+        <button class="extension-btn">下载安装</button>
+      </div>
+      <div class="extension browser3">
+        <img src="images/logo-opera.svg" alt="opera" class="icon">
+        <h3 class="third-heading">Opera</h3>
+        <p class="paragraph">Minimum version 46</p>
+        <button class="extension-btn">下载安装</button>
+      </div>
+    </div>
+  </section>
+  <section class="contact section" id="section-5">
+    <div class="contact-headings">
+      <h4>35,000+ 已经加入</h4>
+      <h2>此时此刻，加入我们吧！</h2>
+    </div>
+    <form class="contact-form">
+      <input type="email" placeholder="请输入你的邮箱地址">
+      <button class="contact-us">联系我们</button>
+    </form>
+  </section>
+</body>
+<script>
+  'use strict';
+  // DOM  Varriables
+  const faqQuestions = document.querySelectorAll('.question')
+  const navElements = document.querySelector('.nav-links');
+  const navBar = document.querySelector('nav');
+  const chromeButton = document.querySelector('.chrome');
+  const firefoxButton = document.querySelector('.firefox');
+  // Lets Implement smooth scroll for the navigation Elements
+  navElements.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    if (e.target.classList.contains('nav-link')) {
+
+      const id = e.target.getAttribute('href');
+      document.querySelector(id).scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  });
+
+  // Menu for mobile 
+  const burgermenu = document.querySelector('.menu');
+  burgermenu.addEventListener('click', () => {
+
+    burgermenu.classList.toggle('toggle');
+    navElements.classList.toggle('nav-active');
+    // navElements.style.display ='block';
+  });
+
+  // Chrome Button
+  const extensionSection = document.querySelector('#section-3');
+  chromeButton.addEventListener('click', e => {
+    e.preventDefault();
+    extensionSection.scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+  // Firefox Button
+  firefoxButton.addEventListener('click', e => {
+    e.preventDefault();
+    extensionSection.scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+  // Switching into diffrent tabs in the feature section
+  // Dom Varriables
+  const featureTabLinks = document.querySelector('.features-links');
+  const featureTabs = document.querySelectorAll('.tab');
+  const featureLinks = document.querySelectorAll('.feature-link');
+
+  // Operations
+  featureTabLinks.addEventListener('click', e => {
+
+    e.preventDefault();
+    const clickedLink = e.target.closest('.feature-link');
+    // Guard Clause
+    if (!clickedLink) {
+      return;
+    }
+    featureTabs.forEach(t => t.style.display = "none");
+    featureLinks.forEach(link => link.classList.remove('active'));
+    // Add the active class for target
+    clickedLink.classList.add('active');
+    if (clickedLink) {
+      const content = document.querySelector(`.tab-${clickedLink.dataset.link}`);
+      content.style.display = 'flex';
+    }
+  })
+  // Lets do some section revealing part
+  // Bring the action of Intersection Observer
+  const allSections = document.querySelectorAll('.section');
+
+  //Revealing section function
+  const sectionReveal = function (entries, observer) {
+    const [entry] = entries; //Destructuring
+
+    if (!entry.isIntersecting) return;
+    entry.target.classList.remove('section-hidden');
+    observer.unobserve(entry.target);
+  }
+
+  const sectionObserver = new IntersectionObserver(sectionReveal, {
+    root: null,
+    threshold: 0.15,
+  });
+  allSections.forEach(section => {
+    sectionObserver.observe(section);
+    section.classList.add('section-hidden');
+  });
+</script>
+
+</html>
