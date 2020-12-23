@@ -2,330 +2,269 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet" />
-    <title>Frontend Mentor | FAQ Accordion Card</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frontend Mentor | FAQ Accordion Card</title>
 </head>
 <style>
-    :root {
-  --color-dark-blue: hsl(238, 29%, 16%);
-  --color-red: hsl(14, 88%, 65%);
-  --color-soft-violet: hsl(273, 75%, 66%);
-  --color-soft-blue: hsl(240, 73%, 65%);
-  --color-grayish-blue: hsl(237, 12%, 33%);
-  --color-dark-grayish-blue: hsl(240, 6%, 50%);
-  --color-light-grayish-blue: hsl(240, 5%, 91%);
-  --gradient: linear-gradient(
-    to top,
-    #6565e7,
-    #7a66e8,
-    #8d66e9,
-    #9f67e9,
-    #af67e9
-  );
-  --font-size: 13px;
-  --font-family: "Kumbh Sans", sans-serif;
-  --gap: 10px;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-details > summary::-webkit-details-marker {
-  display: none;
-}
-details > summary:focus {
-  outline: none;
-  color: var(--color-red);
-}
-body {
-  height: 100vh;
-  width: 100vw;
-  background: var(--gradient);
-  font-size: var(--font-size);
-  font-family: var(--font-family);
-  color: var(--color-dark-grayish-blue);
-  overflow-x: hidden;
-}
-
-.card {
-  background: url("images/bg-pattern-mobile.svg");
-  background-repeat: no-repeat;
-  background-color: #fff;
-  background-size: 80%;
-  background-position-y: -5px;
-  background-position-x: 30px;
-  width: 320px;
-
-  border-radius: 20px;
-  position: relative;
-  padding: 30px 0;
-  margin: 180px auto 0;
-  transition: all 0.3s ease-in-out;
-  -webkit-box-shadow: 1px 10px 21px -4px rgba(0, 0, 0, 0.85);
-  box-shadow: 1px 10px 21px -4px rgba(0, 0, 0, 0.85);
-}
-
-.card-img-container {
-  position: relative;
-  width: 100%;
-  height: 100px;
-}
-.card-img {
-  position: absolute;
-  z-index: 10;
-  left: 5%;
-  top: -135%;
-}
-
-.card-img--desktop {
-  position: absolute;
-  left: -13%;
-  top: 9%;
-  display: none;
-}
-.box-img {
-  position: absolute;
-  left: -10%;
-  top: 41%;
-  z-index: 10;
-  display: none;
-}
-.card-title {
-  text-align: center;
-  margin-top: 30px;
-  margin-bottom: 50px;
-  color: var(--color-dark-blue);
-  font-size: 2rem;
-}
-
-.faq {
-  height: 2rem;
-  padding: 0 1rem;
-  transition: height 0.3s ease-out;
-}
-
-.faq-question {
-  font-size: 0.9rem;
-  margin-bottom: var(--gap);
-  display: flex;
-  justify-content: space-between;
-  color: var(--color-grayish-blue);
-  font-weight: 300;
-}
-.faq-question::after {
-  content: url("images/icon-arrow-down.svg");
-  transition: all 0.3s ease-out;
-}
-
-.faq-answear {
-  height: 0;
-  overflow: hidden;
-}
-.delimiter {
-  border: 0;
-  border-top: 1px solid var(--color-light-grayish-blue);
-  margin-bottom: 12px;
-}
-
-.faq:hover > .faq-question {
-  color: var(--color-red);
-  cursor: pointer;
-}
-.faq--toggled {
-  height: 5rem;
-}
-.faq--toggled > .faq-question {
-  color: var(--color-dark-blue);
-  font-weight: 700;
-}
-.faq--toggled > .faq-answear {
-  height: auto;
-}
-.faq--toggled > .faq-question::after {
-  transform: rotateZ(-180deg);
-}
-
-@media (min-width: 700px) {
-  body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  :root {
+    --color-dark-blue: hsl(238, 29%, 16%);
+    --color-red: hsl(14, 88%, 65%);
+    --color-soft-violet: hsl(273, 75%, 66%);
+    --color-soft-blue: hsl(240, 73%, 65%);
+    --color-grayish-blue: hsl(237, 12%, 33%);
+    --color-dark-grayish-blue: hsl(240, 6%, 50%);
+    --color-light-grayish-blue: hsl(240, 5%, 91%);
+    --gradient: linear-gradient(to top,
+        #6565e7,
+        #7a66e8,
+        #8d66e9,
+        #9f67e9,
+        #af67e9);
+    --font-size: 13px;
+    --font-family: "Kumbh Sans", sans-serif;
+    --gap: 10px;
   }
-}
-@media (min-width: 1000px) {
-  .card {
-    width: 900px;
-    height: 500px;
-    display: flex;
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
     margin: 0;
-    background: url("images/bg-pattern-desktop.svg");
-    background-position-x: -403px;
-    background-position-y: 63%;
-    background-size: 90%;
+  }
+
+  details>summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details>summary:focus {
+    outline: none;
+    color: var(--color-red);
+  }
+
+  body {
+    height: 100vh;
+    width: 100vw;
+    background: var(--gradient);
+    font-size: var(--font-size);
+    font-family: var(--font-family);
+    color: var(--color-dark-grayish-blue);
+    overflow-x: hidden;
+  }
+
+  .card {
+    background: url("images/bg-pattern-mobile.svg");
     background-repeat: no-repeat;
     background-color: #fff;
+    background-size: 80%;
+    background-position-y: -5px;
+    background-position-x: 30px;
+    width: 320px;
+
+    border-radius: 20px;
+    position: relative;
+    padding: 30px 0;
+    margin: 180px auto 0;
+    transition: all 0.3s ease-in-out;
+    -webkit-box-shadow: 1px 10px 21px -4px rgba(0, 0, 0, 0.85);
+    box-shadow: 1px 10px 21px -4px rgba(0, 0, 0, 0.85);
   }
+
+  .card-img-container {
+    position: relative;
+    width: 100%;
+    height: 100px;
+  }
+
+  .card-img {
+    position: absolute;
+    z-index: 10;
+    left: 5%;
+    top: -135%;
+  }
+
+  .card-img--desktop {
+    position: absolute;
+    left: -13%;
+    top: 9%;
+    display: none;
+  }
+
   .box-img {
-    display: block;
+    position: absolute;
+    left: -10%;
+    top: 41%;
+    z-index: 10;
+    display: none;
   }
 
   .card-title {
-    text-align: start;
-    padding-left: 1rem;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    color: var(--color-dark-blue);
+    font-size: 2rem;
   }
-  .card-img-container {
-    width: 50%;
-    height: 100%;
+
+  .faq {
+    height: 2rem;
+    padding: 0 1rem;
+    transition: height 0.3s ease-out;
+  }
+
+  .faq-question {
+    font-size: 0.9rem;
+    margin-bottom: var(--gap);
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-grayish-blue);
+    font-weight: 300;
+  }
+
+  .faq-question::after {
+    content: url("images/icon-arrow-down.svg");
+    transition: all 0.3s ease-out;
+  }
+
+  .faq-answear {
+    height: 0;
     overflow: hidden;
   }
-  .card-img--desktop {
-    display: block;
-  }
-  .card-content {
-    width: 40%;
-  }
-}
 
-.attribution {
-  margin-top: 36px;
-  text-align: center;
-  color: var(--color-light-grayish-blue);
-}
-.link {
-  text-decoration: none;
-  color: var(--color-red);
-}
+  .delimiter {
+    border: 0;
+    border-top: 1px solid var(--color-light-grayish-blue);
+    margin-bottom: 12px;
+  }
 
+  .faq:hover>.faq-question {
+    color: var(--color-red);
+    cursor: pointer;
+  }
+
+  .faq--toggled {
+    height: 5rem;
+  }
+
+  .faq--toggled>.faq-question {
+    color: var(--color-dark-blue);
+    font-weight: 700;
+  }
+
+  .faq--toggled>.faq-answear {
+    height: auto;
+  }
+
+  .faq--toggled>.faq-question::after {
+    transform: rotateZ(-180deg);
+  }
+
+  @media (min-width: 700px) {
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @media (min-width: 1000px) {
+    .card {
+      width: 900px;
+      height: 500px;
+      display: flex;
+      margin: 0;
+      background: url("images/bg-pattern-desktop.svg");
+      background-position-x: -403px;
+      background-position-y: 63%;
+      background-size: 90%;
+      background-repeat: no-repeat;
+      background-color: #fff;
+    }
+
+    .box-img {
+      display: block;
+    }
+
+    .card-title {
+      text-align: start;
+      padding-left: 1rem;
+    }
+
+    .card-img-container {
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .card-img--desktop {
+      display: block;
+    }
+
+    .card-content {
+      width: 40%;
+    }
+  }
 </style>
+
 <body>
-    <article class="card">
-        <img class="box-img" src="images/illustration-box-desktop.svg" alt="" />
-        <div class="card-img-container">
-            <img class="card-img--desktop" src="images/illustration-woman-online-desktop.svg" alt="" />
-            <img class="card-img" src="images/illustration-woman-online-mobile.svg" alt="" />
-        </div>
-        <div class="card-content">
-            <h1 class="card-title">FAQ</h1>
-
-            <details class="faq">
-                <summary class="faq-question">
-                    How many team members can I invite?
-                </summary>
-                <p class="faq-answear">
-                    You can invite up to 2 additional users on the Free plan. There is
-                    no limit on team members for the Premium plan.
-                </p>
-            </details>
-            <hr class="delimiter" />
-            <details class="faq">
-                <summary class="faq-question">
-                    What is the maximum file upload size?
-                </summary>
-                <p class="faq-answear">
-                    No more than 2GB. All files in your account must fit your allotted
-                    storage space.
-                </p>
-            </details>
-            <hr class="delimiter" />
-            <details class="faq">
-                <summary class="faq-question">How do I reset my password?</summary>
-                <p class="faq-answear">
-                    Click “Forgot password” from the login page or “Change password”
-                    from your profile page. A reset link will be emailed to you.
-                </p>
-            </details>
-            <hr class="delimiter" />
-            <details class="faq">
-                <summary class="faq-question">Can I cancel my subscription?</summary>
-                <p class="faq-answear">
-                    Yes! Send us a message and we’ll process your request no questions
-                    asked.
-                </p>
-            </details>
-            <hr class="delimiter" />
-            <details class="faq">
-                <summary class="faq-question">
-                    Do you provide additional support?
-                </summary>
-                <p class="faq-answear">
-                    Chat and email support is available 24/7. Phone lines are open
-                    during normal business hours.
-                </p>
-            </details>
-            <hr class="delimiter" />
-        </div>
-    </article>
-
-    <div class="attribution">
-        Challenge by
-        <a class="link" href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor.</a>
-        <span>🖥️ Coded by </span>
-        <a href="https://github.com/GSterczewski" target="_blank" class="link">Me</a>.
+  <article class="card">
+    <img class="box-img" src="images/illustration-box-desktop.svg" alt="" />
+    <div class="card-img-container">
+      <img class="card-img--desktop" src="images/illustration-woman-online-desktop.svg" alt="" />
+      <img class="card-img" src="images/illustration-woman-online-mobile.svg" alt="" />
     </div>
+    <div class="card-content">
+      <h1 class="card-title">FAQ</h1>
 
-    <script>
-        class ListItem {
-            constructor(ref) {
-                this.ref = ref
-                this.isExpanded = false
-                this.className = "faq--toggled"
-            }
-            expand() {
-                if (this.isExpanded) {
-                    this.ref.classList.remove(this.className)
-                    this.ref.open = false
-                    this.isExpanded = false
-                } else {
-                    this.isExpanded = true
-                    this.ref.open = true
-                    this.ref.classList.add(this.className)
-                }
+      <details class="faq">
+        <summary class="faq-question">
+          How many team members can I invite?
+        </summary>
+        <p class="faq-answear">
+          You can invite up to 2 additional users on the Free plan. There is
+          no limit on team members for the Premium plan.
+        </p>
+      </details>
+      <hr class="delimiter" />
+      <details class="faq">
+        <summary class="faq-question">
+          What is the maximum file upload size?
+        </summary>
+        <p class="faq-answear">
+          No more than 2GB. All files in your account must fit your allotted
+          storage space.
+        </p>
+      </details>
+      <hr class="delimiter" />
+      <details class="faq">
+        <summary class="faq-question">How do I reset my password?</summary>
+        <p class="faq-answear">
+          Click “Forgot password” from the login page or “Change password”
+          from your profile page. A reset link will be emailed to you.
+        </p>
+      </details>
+      <hr class="delimiter" />
+      <details class="faq">
+        <summary class="faq-question">Can I cancel my subscription?</summary>
+        <p class="faq-answear">
+          Yes! Send us a message and we’ll process your request no questions
+          asked.
+        </p>
+      </details>
+      <hr class="delimiter" />
+      <details class="faq">
+        <summary class="faq-question">
+          Do you provide additional support?
+        </summary>
+        <p class="faq-answear">
+          Chat and email support is available 24/7. Phone lines are open
+          during normal business hours.
+        </p>
+      </details>
+      <hr class="delimiter" />
+    </div>
+  </article>
 
-            }
-            fold() {
-                this.ref.classList.remove(this.className)
-                this.ref.removeAttribute("open")
-                this.isExpanded = false
-            }
-
-        }
-
-        class List {
-            constructor(className) {
-                this.items = Array.from(document.getElementsByClassName(className)).map(item => new ListItem(item))
-            }
-            toggle(event) {
-                event.preventDefault()
-                this.items.forEach(item => {
-                    if (item.ref === event.currentTarget) {
-                        item.expand()
-                    } else {
-                        item.fold()
-                    }
-                })
-            }
-            hook() {
-                this.items.forEach(item => {
-                    item.ref.addEventListener("click", this.toggle.bind(this))
-                })
-            }
-        }
-
-
-        window.onload = () => {
-            new List("faq").hook()
-        }
-    </script>
 </body>
 
 </html>
