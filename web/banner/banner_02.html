@@ -1,221 +1,272 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-   <style>
-       * {
+    <title>Auto Image Silder</title>
+</head>
+<style>
+    * {
         margin: 0;
         padding: 0;
     }
-    .content {
-        width: 300px;
-        height: 300px;
-        position: relative;
-        overflow: hidden;
-        margin: 0 auto;
+
+    #slider,
+    ul,
+    a {
+        width: 600px;
+        height: 400px;
     }
-    .wrapper {
-        width: 400%;
-        height: 100%;
-        margin: 0;
-        padding: 0;
+
+    #slider {
         position: absolute;
-        top: 0;
-        left: 0;
-        display: flex;
-        transition: none;
+        border: 2px solid black;
+        /*padding: 3px;*/
+        margin: 10px 0 0 10px;
+        overflow: hidden;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
     }
-    .wrapper li {
-        flex: 1;
-        list-style: none;
-        margin: 0;
-        padding: 0;
+
+    ul {
+        position: absolute;
+        list-style-type: none;
+        width: 6000px;
+        /*transition-duration: 0.3s;*/
     }
-    .wrapper li img {
+
+    li {
+        float: left;
+    }
+
+    a {
+        display: inline-block;
+    }
+
+    img {
         width: 100%;
         height: 100%;
     }
-    .radius {
-        height: 12px;
-        margin: 0;
-        padding: 0;
+
+    #slider:hover .arrow-container {
+        display: block;
+    }
+
+    .arrow-container {
         position: absolute;
-        bottom: 10px;
-        left: 10px;
-        display: flex;
-        align-items: center;
-    }
-    .radius li {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background-color: white;
-        opacity: 0.6;
-        margin: 0 3px;
-        padding: 0;
-        list-style: none;
-    }
-    .radius-active {
-        opacity: 1 !important;
-        border: 2px solid rgb(255, 255, 255, 0.5);
-        background-clip: padding-box;
-    }
-    .prev {
-        width: 23px;
-        line-height: 34px;
-        text-align: center;
-        position: absolute;
-        left: 0;
+        width: 100%;
+        height: 50px;
         top: 50%;
-        margin-top: -17px;
-        background-color: darkgray;
-        opacity: 0;
+        margin-top: -25px;
+        display: none;
     }
-    .next {
-        width: 23px;
-        line-height: 34px;
-        text-align: center;
+
+    .arrow-container span {
         position: absolute;
-        right: 0;
-        top: 50%;
-        margin-top: -17px;
-        background-color: darkgray;
-        opacity: 0;
-    }
-    .prev span, .next span {
-        font-weight: bold;
+        width: 50px;
+        height: 50px;
+        font-size: 40px;
+        /*display: inline-block;*/
+        text-align: center;
+        line-height: 50px;
+        background: rgba(0, 0, 0, 0.2);
         color: white;
-        font-size: 18px;
     }
-   </style>
-</head>
+
+    .left-arrow {
+        left: 0px;
+        cursor: pointer;
+    }
+
+    .right-arrow {
+        right: 0px;
+        cursor: pointer;
+    }
+
+    .indicator-container {
+        position: absolute;
+        width: 150px;
+        height: 30px;
+        line-height: 30px;
+        bottom: 0;
+        left: 50%;
+        margin-left: -75px;
+        text-align: center;
+    }
+
+    .indicator {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border-radius: 100%;
+        background: white;
+        cursor: pointer;
+    }
+
+    .indicator.active {
+        background: red;
+    }
+</style>
 
 <body>
-    <div class="content">
-        <ul class="wrapper">  
-            <li><img src="images/01.jpg" ></li>
-            <li><img src="images/02.jpg" ></li>
-            <li><img src="images/03.jpg" ></li>
-            <li><img src="images/04.jpg" ></li>
+    <div id="slider">
+        <ul class="slieder-item-container">
+            <li><a href="#"><img src="images/01.jpg" /></a></li>
+            <li><a href="#"><img src="images/02.jpg" /></a></li>
+            <li><a href="#"><img src="images/03.jpg" /></a></li>
+            <li><a href="#"><img src="images/04.jpg" /></a></li>
+            <li><a href="#"><img src="images/05.jpg" /></a></li>
         </ul>
-        <ul class="radius">  
-        </ul>
-        <div class="prev"> 
-            <span><</span>
+        <div class="arrow-container">
+            <span class="left-arrow">
+                <</span> <span class="right-arrow">>
+            </span>
         </div>
-        <div class="next">
-            <span>></span>  
+        <div class="indicator-container">
+            <span class="indicator active"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
         </div>
     </div>
 </body>
-<script type="text/javascript">
-    window.onload= function() {
-        var content = document.getElementsByClassName('content')[0]
-        var wrapper = document.getElementsByClassName('wrapper')[0]
-        var radius = document.getElementsByClassName('radius')[0]
-        var prev = document.getElementsByClassName('prev')[0]
-        var next = document.getElementsByClassName('next')[0]
-        var imgWidth = wrapper.children[0].offsetWidth
-        var wrapIndex = 0
-
-        //悬停显隐
-        content.onmouseover = function() {
-            clearInterval(timer)
-            next.style.opacity = "0.6";
-            prev.style.opacity = "0.6";
+<script>
+    var autoplay = true;
+    var autoplay_Delay = 2000; // ms
+    var autoplayId;
+    var intervalId;
+    var slider;
+    var slider_item_container;
+    var slider_items;
+    var indicator_container;
+    var slider_item_width;
+    var curIndex = 0;
+    window.onload = function () {
+        initElement();
+        initEvent();
+        if (autoplay) {
+            startAnimation(slider_item_container);
         }
-        content.onmouseout = function() {
-            timer = setInterval(function(){
-                next.onclick()
-            },3500)
-            next.style.opacity = "0";
-            prev.style.opacity = "0";
-        }
-
-        //动态创建圆点指示器
-        function createLi() {
-            for(let i=0; i<wrapper.children.length; i++) {
-                let li = document.createElement("li")
-                radius.appendChild(li)
-            }
-            radius.children[0].className='radius-active'
-        }
-        createLi()
-
-        //指示器响应
-        function cirAction(wrapIndex) {
-            for(let i=0; i<radius.children.length; i++) {
-                radius.children[i].classList.remove("radius-active")
-            }
-            if(wrapIndex === wrapper.children.length-1) {
-                radius.children[0].className='radius-active'
-            }
-            else {
-                radius.children[wrapIndex].className='radius-active'
-            }
-        }
-
-        //指示器控制
-        function cirMouse() {
-            for(let i=0; i<radius.children.length; i++) {
-                radius.children[i].onmouseover = function() {
-                    clearInterval(timer);
-                    animate(wrapper, -i*imgWidth);
-                    wrapIndex = i;
-                    cirAction(wrapIndex)
-                }
-            }
-        }
-        cirMouse()
-
-        //滑动动画
-        function animate(el, target) {
-            clearInterval(el.timer)
-            el.timer = setInterval(function(){
-                let move = 8;
-                let present = wrapper.offsetLeft;
-                move = present > target ? -move : move;
-                present += move;
-                if(Math.abs(present-target) > Math.abs(move)) {
-                    wrapper.style.left = present + 'px'
-                }
-                else {
-                    clearInterval(el.timer);
-                    wrapper.style.left = target + 'px'
-                }
-            },16)  
-        }
-
-        //next控制
-        next.onclick = function() {
-            if(wrapIndex === wrapper.children.length-1){
-                wrapIndex = 0;
-                wrapper.style.left = 0 + 'px';
-            }
-            wrapIndex++;
-            animate(wrapper,-wrapIndex*imgWidth);
-            cirAction(wrapIndex);
-        }
-
-        //prev控制
-        prev.onclick = function() {
-            if(wrapIndex === 0){
-                wrapIndex = wrapper.children.length-1;
-                wrapper.style.left = -wrapIndex*imgWidth + 'px';
-            }
-            wrapIndex--;
-            animate(wrapper,-wrapIndex*imgWidth);
-            cirAction(wrapIndex)
-        }
-
-        //自动滑动
-        var timer = setInterval(function(){
-            next.onclick()
-        },3500)
     }
 
+    function initElement() {
+        slider = document.getElementById("slider");
+        slider_items = slider.getElementsByTagName("li");
+        slider_item_container = slider.getElementsByClassName("slieder-item-container")[0];
+        indicator_container = slider.getElementsByClassName("indicator-container")[0];
+        var firstItem = slider_items[0].cloneNode(true);
+        slider_item_container.appendChild(firstItem);
+        slider_item_width = slider_items[0].offsetWidth;
+    }
 
+    function initEvent() {
+        slider.addEventListener("mouseover", function () {
+            clearTimeout(autoplayId);
+            autoplay = false;
+        });
+        slider.addEventListener("mouseout", function () {
+            autoplay = true;
+            startAnimation(slider_item_container);
+        });
+        var indicators = indicator_container.children;
+        for (var i = 0; i < indicators.length; i++) {
+            indicators[i].setAttribute("index", i);
+            indicators[i].addEventListener("click", function () {
+                var index = parseInt(this.getAttribute("index"));
+                next(index);
+            });
+        }
+        var left_arrow = slider.getElementsByClassName("left-arrow")[0];
+        var right_arrow = slider.getElementsByClassName("right-arrow")[0];
+        left_arrow.addEventListener("click", function () {
+            prev();
+        });
+        right_arrow.addEventListener("click", function () {
+            next();
+        });
+    }
+
+    function animate(element, target) {
+        var step = 10;
+        var time = 10;
+        var gap = (Math.abs(target - element.offsetLeft) / slider_item_width);
+        if (gap > 1) {
+            step = step * gap;
+            time = time / gap;
+        }
+        if (element) {
+            step = (element.offsetLeft > target) ? -step : step;
+            clearInterval(intervalId);
+            setCurrentActiveIndicator(curIndex);
+            intervalId = setInterval(function () {
+                if ((step < 0) && (Math.abs(element.offsetLeft + step) < Math.abs(target))) {
+                    element.style.left = element.offsetLeft + step + "px";
+                } else {
+                    if (Math.abs(target - element.offsetLeft) > Math.abs(step)) {
+                        element.style.left = element.offsetLeft + step + "px";
+                    } else {
+                        clearInterval(intervalId);
+                        intervalId = -1;
+                        element.style.left = target + "px";
+                        if (autoplay) {
+                            startAnimation(element);
+                        }
+                    }
+                }
+            }, time);
+        }
+    }
+
+    function prev() {
+        var element = slider_item_container;
+        var li = element.children;
+        curIndex = curIndex - 1;
+        if (curIndex < 0) {
+            element.style.left = -((li.length - 1) * slider_item_width) + "px";
+            curIndex = li.length - 2;
+        }
+        animate(element, -(curIndex * slider_item_width));
+    }
+
+    function next(nextIndex) {
+        var element = slider_item_container;
+        var li = element.children;
+        if ((nextIndex != null) && (typeof (nextIndex) != "undefined")) {
+            curIndex = nextIndex;
+        } else {
+            curIndex = curIndex + 1;
+            if (curIndex > (li.length - 1)) {
+                element.style.left = 0 + "px";
+                curIndex = 1;
+            }
+        }
+        animate(element, -(curIndex * slider_item_width));
+    }
+
+    function startAnimation(element) {
+        if (autoplayId) {
+            clearTimeout(autoplayId);
+        }
+        autoplayId = setTimeout(function () {
+            next();
+        }, autoplay_Delay);
+    }
+
+    function setCurrentActiveIndicator(index) {
+        var indicators = indicator_container.children;
+        if (index == indicators.length) {
+            index = 0;
+        }
+        for (var i = 0; i < indicators.length; i++) {
+            if (i == index) {
+                indicators[i].className = "indicator active";
+            } else {
+                indicators[i].className = "indicator";
+            }
+        }
+    }
 </script>
+
 </html>
