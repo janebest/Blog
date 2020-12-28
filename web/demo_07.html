@@ -7,5 +7,29 @@
 </head>
 <body>
     
+    <!-- 数字自动加载 -->
+    <div class="row stats-con">
+        <div class="col-md-4 col-6 stats_info counter_grid">
+            <h3>Founded in 2020</h3>
+            <p class="counter">2020</p>
+            <span>Year we Founded</span>
+        </div>
+        <div class="col-md-4 col-6 stats_info counter_grid1">
+            <h3>We proudly Received</h3>
+            <p class="counter">120</p>
+            <span>No: of Awards</span>
+        </div>
+        <div class="col-md-4 col-6 stats_info counter_grid mt-md-0 mt-5">
+            <h3>Number of clients</h3>
+            <p class="counter">1500</p>
+            <span>Daily clients</span>
+        </div>
+    </div>
 </body>
+<script src="../public/js/jquery.min.js"></script>
+<script src="../public/js/jquery.waypoints.min.js"></script>
+<script src="../public/js/jquery.countup.js"></script>
+<script>
+  $('.counter').countUp();
+</script>
 </html>
