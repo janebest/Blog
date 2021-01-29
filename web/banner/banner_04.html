@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body,
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .lunbo {
+            width: 730px;
+            height: 454px;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .circle {
+            position: absolute;
+            left: 50%;
+            margin-left: -50px;
+            bottom: 10px;
+        }
+
+        .circle span {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background-color: #ccc;
+            text-align: center;
+            border-radius: 18px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .circle span.current {
+            background-color: yellow;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="lunbo" id="scroll">
+        <ul id="ul">
+            <li><img src="images/11.jpg" alt=""></li>
+            <li><img src="images/22.jpg" alt=""></li>
+            <li><img src="images/33.jpg" alt=""></li>
+            <li><img src="images/44.jpg" alt=""></li>
+            <li><img src="images/55.jpg" alt=""></li>
+            <li><img src="images/66.jpg" alt=""></li>
+        </ul>
+    </div>
+
+</body>
+<script src="../../public/js/jquery.min.js"></script>
+<script>
+    window.onload = function () {
+        //动态生成轮播图小圆点 
+        var circle = document.createElement("div");
+        var scroll = document.getElementById('scroll');
+        circle.setAttribute("class", "circle");
+        var lis = document.getElementsByTagName("li");
+        for (var i = 0; i < lis.length; i++) {
+            var span = document.createElement("span");
+            span.innerHTML = i + 1;
+            circle.appendChild(span);
+        }
+        scroll.appendChild(circle);
+        var spanChildren = circle.children;
+        spanChildren[0].setAttribute("class", "current");
+    }
+</script>
+
+</html>

@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <div style="height: 1500px;">123</div>
     <!-- 数字自动加载 -->
+    <div class="number_zone">
+        123456
+    </div>
+
     <div class="row stats-con">
         <div class="col-md-4 col-6 stats_info counter_grid">
             <h3>Founded in 2020</h3>
@@ -30,6 +36,17 @@
 <script src="../public/js/jquery.waypoints.min.js"></script>
 <script src="../public/js/jquery.countup.js"></script>
 <script>
-  $('.counter').countUp();
+    $('.counter').countUp();
+
+    var _height = $(".number_zone").offset().top;
+    // console.log(_height)
+    $(window).scroll(function () {
+        var this_scrollTop = $(this).scrollTop();
+        if (this_scrollTop = _height) {
+           
+            // console.log('asf')
+        }
+    });
 </script>
+
 </html>
